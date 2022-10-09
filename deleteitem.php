@@ -65,7 +65,7 @@ if ($confirm == "true") {
 <html lang="en">
     <head>
         <title>Home Index</title>
-        <link rel="stylesheet" type="text/css" href="./styles/light.css">
+        <link rel="stylesheet" type="text/css" href="./styles/main.css">
         <link rel="stylesheet" type="text/css" href="./styles/themes/<?php echo $config["theme"]; ?>.css">
     </head>
 
