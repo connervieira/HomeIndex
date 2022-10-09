@@ -48,7 +48,7 @@ $container = filter_var($container, FILTER_SANITIZE_STRING); // Sanitize the con
 $name = filter_var($name, FILTER_SANITIZE_STRING); // Sanitize the name string.
 $description = filter_var($description, FILTER_SANITIZE_STRING); // Sanitize the description string.
 $quantity = filter_var($quantity, FILTER_SANITIZE_NUMBER_INT); // Sanitize the quantity integer number.
-$value = filter_var($value, FILTER_SANITIZE_NUMBER_FLOAT); // Sanitize the value floating point number.
+$value = filter_var($value, FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION); // Sanitize the value floating point number.
 
 
 // Convert the item information into an array.
@@ -84,7 +84,8 @@ file_put_contents("./itemdatabase.txt", serialize($item_database)); // Write dat
 <html lang="en">
     <head>
         <title>Home Index</title>
-        <link rel="stylesheet" type="text/css" href="./styles/light.css">
+        <link rel="stylesheet" type="text/css" href="./styles/main.css">
+        <link rel="stylesheet" type="text/css" href="./styles/themes/light.css">
     </head>
 
     <body>
@@ -113,18 +114,18 @@ file_put_contents("./itemdatabase.txt", serialize($item_database)); // Write dat
                 if (sizeof($item_database) > 0) { // Only display the information in the item database there is actually information to show.
                     foreach ($item_database["locations"] as $location_name => $location_information) {
                         echo "<div class='location'>";
-                        echo "<h1>" . $location_name . "</h1>";
+                        echo "<h1 id='" . $location_name . "'>" . $location_name . "</h1>";
                         foreach ($item_database["locations"][$location_name]["spaces"] as $space_name => $space_information) {
                             echo "<div class='space'>";
-                            echo "<h2>" . $space_name . "</h2>";
+                            echo "<h2 id='"  . $location_name . "-" . $space_name . "'>" . $space_name . "</h2>";
                             foreach ($item_database["locations"][$location_name]["spaces"][$space_name]["containers"] as $container_name => $container_information) {
                                 echo "<div class='container'>";
-                                echo "<h3>" . $container_name . "</h3>";
+                                echo "<h3 id='" . $location_name . "-" . $space_name . "-" . $container_name . "'>" . $container_name . "</h3>";
                                 foreach ($item_database["locations"][$location_name]["spaces"][$space_name]["containers"][$container_name]["items"] as $item_name => $item_information) {
                                     echo "<div class='item'>";
                                     echo "<h4>" . $item_name . "</h4>";
                                     echo "<p>" . $item_information["description"] . "</p>";
-                                    echo "<p>" . $item_information["quantity"] . " ($" . $item_information["value"] . ")" . "</p>";
+                                    echo "<p>Quantity: " . $item_information["quantity"] . " $" . $item_information["value"] . " ($" . intval($item_information["quantity"]) * floatval($item_information["value"]) . ")</p>";
                                     echo "<div class='button'><a href='./deleteitem.php?location=" . $location_name . "&space=" . $space_name . "&container=" . $container_name . "&item=" . $item_name . "'>Delete</a></div>";
                                     echo "</div>";
                                 }
