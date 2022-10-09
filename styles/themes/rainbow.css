@@ -1,0 +1,38 @@
+body {
+    background-image: linear-gradient(180deg, #ff9999, #ffff99, #99ff99, #9999ff, #ff99ff);
+    color: #000000;
+}
+
+a {
+    background: #333333;
+    color: #ffffff;
+}
+
+
+.new-item {
+    border-style: solid;
+    border-color: #555555;
+    border-width: 5px;
+    background: #000000;
+    color: #ffffff;
+}
+
+.location {
+    background: #ff6666;
+    color: #000000;
+}
+
+.space {
+    background: #ffff66;
+    color: #000000;
+}
+
+.container {
+    background: #66ff66;
+    color: #000000;
+}
+
+.item {
+    background: #6666ff;
+    color: #000000;
+}

@@ -1,0 +1,30 @@
+a {
+    background: #333333;
+    color: #ffffff;
+}
+
+
+.new-item {
+    background: #cccccc;
+    color: #000000;
+}
+
+.location {
+    background: #dddddd;
+    color: #000000;
+}
+
+.space {
+    background: #bbbbbb;
+    color: #000000;
+}
+
+.container {
+    background: #999999;
+    color: #000000;
+}
+
+.item {
+    background: #777777;
+    color: #000000;
+}

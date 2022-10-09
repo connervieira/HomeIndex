@@ -7,8 +7,6 @@ body {
 a {
     text-decoration: none;
     border-radius: 5px;
-    background: #333333;
-    color: #ffffff;
     padding: 5px;
 }
 
@@ -35,8 +33,6 @@ a {
 
 
 .new-item {
-    background: #333333;
-    color: #ffffff;
     text-align: center;
     width: 80%;
     margin-left: 10%;
@@ -46,8 +42,6 @@ a {
 
 .location {
     border-radius:15px;
-    background: #000000;
-    color: #ffffff;
     padding: 2%;
     padding-left: 5%;
     padding-right: 5%;
@@ -57,8 +51,6 @@ a {
 
 .space {
     border-radius:15px;
-    background: #222222;
-    color: #ffffff;
     padding: 2%;
     padding-left: 5%;
     padding-right: 5%;
@@ -67,8 +59,6 @@ a {
 
 .container {
     border-radius:15px;
-    background: #444444;
-    color: #ffffff;
     padding: 2%;
     padding-left: 5%;
     padding-right: 5%;
@@ -77,8 +67,6 @@ a {
 
 .item {
     border-radius:15px;
-    background: #666666;
-    color: #ffffff;
     padding: 0.5%;
     margin-left: 5%;
     margin-right: 5%;
