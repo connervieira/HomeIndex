@@ -41,14 +41,18 @@ $quantity = $_POST["quantity"]; // This is the quantity of the item.
 $value = $_POST["value"]; // This is the value of the item.
 
 
-// TODO - Sanitize inputs.
-if ($description == "") {
-    $description = "No description provided";
-}
+// Sanitize inputs.
+$location = filter_var($location, FILTER_SANITIZE_STRING); // Sanitize the location string.
+$space = filter_var($space, FILTER_SANITIZE_STRING); // Sanitize the space string.
+$container = filter_var($container, FILTER_SANITIZE_STRING); // Sanitize the container string.
+$name = filter_var($name, FILTER_SANITIZE_STRING); // Sanitize the name string.
+$description = filter_var($description, FILTER_SANITIZE_STRING); // Sanitize the description string.
+$quantity = filter_var($quantity, FILTER_SANITIZE_NUMBER_INT); // Sanitize the quantity integer number.
+$value = filter_var($value, FILTER_SANITIZE_NUMBER_FLOAT); // Sanitize the value floating point number.
 
 
 // Convert the item information into an array.
-$item_information = ["description" => $description, "quantity" => $quantity, "value" => $value];
+$item_information = ["description" => $description, "quantity" => intval($quantity), "value" => floatval($value)];
 
 
 // Add the item to the item database.
@@ -89,14 +93,14 @@ file_put_contents("./itemdatabase.txt", serialize($item_database)); // Write dat
         <hr>
         <div class="new-item">
             <form method="POST">
-                <label for="location">Location: </label><input type="text" name="location" id="location" placeholder="Location" value="<?php echo $location; ?>">
-                <label for="space">Space: </label><input type="text" name="space" id="space" placeholder="Space" value="<?php echo $space; ?>">
-                <label for="container">Container: </label><input type="text" name="container" id="container" placeholder="Container" value="<?php echo $container; ?>">
+                <label for="location">Location: </label><input type="text" name="location" id="location" placeholder="Location" value="<?php echo $location; ?>" required>
+                <label for="space">Space: </label><input type="text" name="space" id="space" placeholder="Space" value="<?php echo $space; ?>" required>
+                <label for="container">Container: </label><input type="text" name="container" id="container" placeholder="Container" value="<?php echo $container; ?>" required>
                 <hr>
-                <label for="name">Name: </label><input type="text" name="name" id="Name" placeholder="Name">
+                <label for="name">Name: </label><input type="text" name="name" id="Name" placeholder="Name" required>
                 <label for="description">Description: </label><input type="text" name="description" id="Description" placeholder="Description">
-                <label for="quantity">Quantity: </label><input type="number" name="quantity" id="Quantity" placeholder="Quantity" value="1">
-                <label for="value">Value: </label><input type="number" name="value" id="Value" placeholder="Value" value="0" step="0.01">
+                <label for="quantity">Quantity: </label><input type="number" name="quantity" id="Quantity" placeholder="Quantity" value="1" required>
+                <label for="value">Value: </label><input type="number" name="value" id="Value" placeholder="Value" value="0" step="0.01" required>
                 <br><br>
                 <input type="submit" value="Add Item">
             </form>
