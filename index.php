@@ -88,6 +88,9 @@ file_put_contents("./itemdatabase.txt", serialize($item_database)); // Write dat
     </head>
 
     <body>
+        <div class="button-container">
+            <div class="button"><a href="#">Tools</a></div>
+        </div>
         <h1 class="title">Home Index</h1> 
         <h3 class="subtitle">Organize and keep track of your posessions.</h3>
         <hr>
