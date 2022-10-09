@@ -1,11 +1,13 @@
 <?php
+include "./config.php"; // Import the configuration library.
+
+
+
 // Check to see if the user is signed in.
 session_start();
 if (isset($_SESSION['loggedin'])) {
 	$username = $_SESSION['username'];
 }
-
-
 
 
 
@@ -64,6 +66,7 @@ if ($confirm == "true") {
     <head>
         <title>Home Index</title>
         <link rel="stylesheet" type="text/css" href="./styles/light.css">
+        <link rel="stylesheet" type="text/css" href="./styles/themes/<?php echo $config["theme"]; ?>.css">
     </head>
 
     <body>

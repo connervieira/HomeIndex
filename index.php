@@ -1,12 +1,13 @@
 <?php
+include "./config.php"; // Import the configuration library.
+
+
+
 // Check to see if the user is signed in.
 session_start();
 if (isset($_SESSION['loggedin'])) {
 	$username = $_SESSION['username'];
 }
-
-
-
 
 
 
@@ -85,7 +86,7 @@ file_put_contents("./itemdatabase.txt", serialize($item_database)); // Write dat
     <head>
         <title>Home Index</title>
         <link rel="stylesheet" type="text/css" href="./styles/main.css">
-        <link rel="stylesheet" type="text/css" href="./styles/themes/light.css">
+        <link rel="stylesheet" type="text/css" href="./styles/themes/<?php echo $config["theme"]; ?>.css">
     </head>
 
     <body>
