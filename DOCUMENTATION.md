@@ -18,6 +18,24 @@ Here you can learn how to install and use Home Index.
     - Example: `http://localhost/homeindex/`
 
 
+## Configuration
+
+1. From the main page of Home Index, press the 'Tools' button at the top of the page.
+2. On the next page, press the 'Configuration' button, under the 'Main Tools' header.
+3. Change configuration values as desired.
+    - The 'Theme' setting defines a color scheme to be used across Home Index.
+    - The 'Database Location' setting defines where Home Index will store it's item database.
+        - To have the database stored in the root Home Index directory, simply prefix the file-name with `./`.
+            - Example: `./itemdatabase.txt`
+        - To have the database stored in a different folder, specify the full file path and file name.
+    - The 'Required Username' setting defines the username that a user must have to access Home Index.
+        - If this setting is left blank, anyone with access to the Home Index instance is permitted to access and edit Home Index information.
+            - If you're hosting Home Index on your local network for personal access, this can be left blank to allow anyone on your home network to access Home Index.
+            - If your Home Index host is publically accessible, you should use this setting to prevent unauthorized access.
+        - Users that are not signed in, or don't have a username matching the required username will be denied access.
+        - Home Index doesn't have a built in authentication system, but is natively compatible with V0LT DropAuth.
+
+
 ## Usage
 
 ### Adding Items
@@ -57,3 +75,21 @@ Here you can learn how to install and use Home Index.
 2. Press the 'Delete' button.
 3. On the next page, press the 'Confirm' button.
 4. The item will be delete. Press 'Back' to return to the main page.
+
+
+### Using Tools
+
+Home Index has various built in tools. To get to these tools, navigate to the main Home Index page, and press the 'Tools' button at the top of the page.
+
+- Main Tools
+    1. Configuration
+        - The configuration tool allows the user to customize their Home Index instance.
+        - The configuration process is described in a different documentation section.
+- Developer Tools
+    1. Dump Formatted Database
+        - This tool simply takes the item database and dumps its contents in a formatted table.
+        - This tool is useful for debugging and sharing your database information.
+    2. Dump Raw Database
+        - This tool takes the contents of the item database and dumps its raw contents into an unformatted string.
+        - This tool is useful for accessing the raw item database without having physical access to the server hosting Home Index.
+        - The string output by this tool is machine-readable, and doesn't contain any HTML formatting.
