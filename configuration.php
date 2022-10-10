@@ -12,10 +12,12 @@ if (isset($_SESSION['loggedin'])) {
 
 // Collect any information from the form that may have been submitted.
 $theme = $_POST["theme"]; // This is the interface theme.
+$database_location = $_POST["databaselocation"]; // This is the file path to the item database.
 
 
 if ($theme != null) { // Check to see if information was input through the form.
     $config["theme"] = $theme;
+    $config["database_location"] = $database_location;
     file_put_contents("./configdatabase.txt", serialize($config)); // Write database changes to disk.
 }
 
@@ -34,6 +36,9 @@ if ($theme != null) { // Check to see if information was input through the form.
     </head>
 
     <body>
+        <div class="button-container">
+            <div class="button"><a href="index.php">Back</a></div>
+        </div>
         <form method="POST">
             <label for='theme'>Theme:</label>
             <select id='theme' name='theme'>
@@ -43,6 +48,8 @@ if ($theme != null) { // Check to see if information was input through the form.
                 <option value='contrast' <?php if ($config["theme"] == "contrast") { echo "selected"; } ?>>Contrast</option>
                 <option value='metallic' <?php if ($config["theme"] == "metallic") { echo "selected"; } ?>>Metallic</option>
             </select>
+            <br><br>
+            <label for="databaselocation">Database Location: </label><input id="databaselocation" name="databaselocation" type="text" value="<?php echo $config["database_location"]; ?>" placeholder="Database Location">
             <br><br>
             <input type="submit" value="Submit">
         </form>

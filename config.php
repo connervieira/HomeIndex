@@ -1,9 +1,6 @@
 <?php
 // This script manages the Home Index configuration. It is loaded on all Home Index pages.
 
-// Current the values here are hardcoded. In a future revision, this file will be responsible for loading values from a configuration file.
-
-
 
 // Initialize the configuration database.
 if (file_exists("./configdatabase.txt") == false) { // If the database file doesn't exist, create it.
@@ -13,6 +10,7 @@ if (file_exists("./configdatabase.txt") == false) { // If the database file does
 
     // Set the default configuration values.
     $config["theme"] = "dark";
+    $config["database_location"] = "./itemdatabase.txt";
     file_put_contents("./configdatabase.txt", serialize($config)); // Write the configuration database to disk.
 
 } else { // Otherwise, the file exists, so load the configuration database from disk.
