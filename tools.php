@@ -23,7 +23,18 @@ if (isset($_SESSION['loggedin'])) {
     </head>
 
     <body>
+        <div class="button-container">
+            <div class="button"><a href="index.php">Back</a></div>
+        </div>
+
+        <h1>Tools</h1>
+
+        <h2>Main Tools</h2>
         <div class="button"><a href='./configuration.php'>Configuration</a></div>
-        <div class="button"><a href='#'>More</a></div>
+
+        <br>
+        <h2>Developer Tools</h2>
+        <div class="button"><a href='./dumpdatabase.php'>Dump Formatted Database</a></div>
+        <div class="button"><a href='./dumpraw.php'>Dump Raw Database</a></div>
     </body>
 </html>
