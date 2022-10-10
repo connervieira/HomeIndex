@@ -7,6 +7,15 @@ include "./config.php"; // Import the configuration library.
 session_start();
 if (isset($_SESSION['loggedin'])) {
 	$username = $_SESSION['username'];
+} else {
+    $username = "";
+}
+
+if ($config["required_user"] != "") { // Check to see if a required username has been set.
+    if ($username != $config["required_user"]) { // Check to see if the current user's username matches the required username.
+        echo "Permissions denied"; // If not, deny the user access to this page.
+        exit(); // Quit loading the rest of the page.
+    }
 }
 
 

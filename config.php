@@ -11,6 +11,7 @@ if (file_exists("./configdatabase.txt") == false) { // If the database file does
     // Set the default configuration values.
     $config["theme"] = "dark";
     $config["database_location"] = "./itemdatabase.txt";
+    $config["required_user"] = "";
     file_put_contents("./configdatabase.txt", serialize($config)); // Write the configuration database to disk.
 
 } else { // Otherwise, the file exists, so load the configuration database from disk.
