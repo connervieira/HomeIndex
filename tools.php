@@ -40,6 +40,7 @@ if ($config["required_user"] != "") { // Check to see if a required username has
 
         <h2>Main Tools</h2>
         <div class="button"><a href='./configuration.php'>Configuration</a></div>
+        <div class="button"><a href='./about.php'>About</a></div>
 
         <br>
         <h2>Developer Tools</h2>
