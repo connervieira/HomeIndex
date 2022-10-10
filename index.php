@@ -84,6 +84,8 @@ file_put_contents("./itemdatabase.txt", serialize($item_database)); // Write dat
 <!DOCTYPE html>
 <html lang="en">
     <head>
+	    <meta charset="utf-8">
+	    <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Home Index</title>
         <link rel="stylesheet" type="text/css" href="./styles/main.css">
         <link rel="stylesheet" type="text/css" href="./styles/themes/<?php echo $config["theme"]; ?>.css">
@@ -91,7 +93,7 @@ file_put_contents("./itemdatabase.txt", serialize($item_database)); // Write dat
 
     <body>
         <div class="button-container">
-            <div class="button"><a href="#">Tools</a></div>
+            <div class="button"><a href="tools.php">Tools</a></div>
         </div>
         <h1 class="title">Home Index</h1> 
         <h3 class="subtitle">Organize and keep track of your posessions.</h3>
