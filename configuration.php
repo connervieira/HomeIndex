@@ -23,12 +23,16 @@ if ($config["required_user"] != "") { // Check to see if a required username has
 $theme = $_POST["theme"]; // This is the interface theme.
 $database_location = $_POST["databaselocation"]; // This is the file path to the item database.
 $required_user = $_POST["requireduser"]; // This is the optional required username to access this instance.
+$instance_name = $_POST["instancename"]; // This is the display name of this instance.
+$credit_level = $_POST["creditlevel"]; // This is the level of credit given to V0LT on the main page.
 
 
 if ($theme != null) { // Check to see if information was input through the form.
     $config["theme"] = $theme;
     $config["database_location"] = $database_location;
     $config["required_user"] = $required_user;
+    $config["instance_name"] = $instance_name;
+    $config["credit_level"] = $credit_level;
     file_put_contents("./configdatabase.txt", serialize($config)); // Write database changes to disk.
 }
 
@@ -63,6 +67,15 @@ if ($theme != null) { // Check to see if information was input through the form.
             <label for="databaselocation">Database Location: </label><input id="databaselocation" name="databaselocation" type="text" value="<?php echo $config["database_location"]; ?>" placeholder="Database Location">
             <br><br>
             <label for="requireduser">Required Username: </label><input id="requireduser" name="requireduser" type="text" value="<?php echo $config["required_user"]; ?>" placeholder="Required User">
+            <br><br>
+            <label for="instancename">Instance Name: </label><input id="instancename" name="instancename" type="text" value="<?php echo $config["instance_name"]; ?>" placeholder="Instance Name">
+            <br><br>
+            <label for='creditlevel'>Credit Level:</label>
+            <select id='creditlevel' name='creditlevel'>
+                <option value='high' <?php if ($config["credit_level"] == "high") { echo "selected"; } ?>>High</option>
+                <option value='low' <?php if ($config["credit_level"] == "low") { echo "selected"; } ?>>Low</option>
+                <option value='off' <?php if ($config["credit_level"] == "off") { echo "selected"; } ?>>Off</option>
+            </select>
             <br><br>
             <input type="submit" value="Submit">
         </form>

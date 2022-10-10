@@ -95,7 +95,7 @@ file_put_contents($config["database_location"], serialize($item_database)); // W
     <head>
 	    <meta charset="utf-8">
 	    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Home Index</title>
+        <title><?php echo $config["instance_name"]; ?></title>
         <link rel="stylesheet" type="text/css" href="./styles/main.css">
         <link rel="stylesheet" type="text/css" href="./styles/themes/<?php echo $config["theme"]; ?>.css">
     </head>
@@ -104,8 +104,15 @@ file_put_contents($config["database_location"], serialize($item_database)); // W
         <div class="button-container">
             <div class="button"><a href="tools.php">Tools</a></div>
         </div>
-        <h1 class="title">Home Index</h1> 
-        <h3 class="subtitle">Organize and keep track of your posessions.</h3>
+        <h1 class="title"><?php echo $config["instance_name"]; ?></h1> 
+        <h3 class="subtitle">Organize and keep track of your possessions.</h3>
+        <?php
+            if ($config["credit_level"] == "high") {
+                echo '<div style="position:fixed;right:0;bottom:0;margin-right:10px;margin-bottom:10px;padding-left:5px;padding-right:5px;border-radius:5px;background:rgba(0, 0, 0, 0.75);"><p style="margin-bottom:7px;margin-top:7px;"><a href="https://v0lttech.com/madebyv0lt.php" style="text-decoration:underline;color:white;">Made by V0LT</a></p></div>';
+            } else if ($config["credit_level"] == "low") {
+                echo '<p style="font-size:15px;color:#cccccc;margin-top:30px;margin-bottom:30px;text-align:center;"><a href="https://v0lttech.com/madebyv0lt.php" style="text-decoration:underline;color:inherit;">Made By V0LT</a></p>';
+            }
+        ?>
         <hr>
         <div class="new-item">
             <form method="POST">

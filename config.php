@@ -9,9 +9,11 @@ if (file_exists("./configdatabase.txt") == false) { // If the database file does
     fclose($config_file); // Close the database file.
 
     // Set the default configuration values.
-    $config["theme"] = "dark";
+    $config["theme"] = "light";
     $config["database_location"] = "./itemdatabase.txt";
     $config["required_user"] = "";
+    $config["instance_name"] = "Home Index";
+    $config["credit_level"] = "high";
     file_put_contents("./configdatabase.txt", serialize($config)); // Write the configuration database to disk.
 
 } else { // Otherwise, the file exists, so load the configuration database from disk.
