@@ -13,6 +13,7 @@ if (file_exists("./configdatabase.txt") == false) { // If the database file does
     $config["database_location"] = "./itemdatabase.txt";
     $config["required_user"] = "";
     $config["instance_name"] = "Home Index";
+    $config["instance_tagline"] = "Organize your personal possessions";
     $config["credit_level"] = "high";
     file_put_contents("./configdatabase.txt", serialize($config)); // Write the configuration database to disk.
 

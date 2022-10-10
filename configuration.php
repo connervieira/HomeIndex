@@ -24,6 +24,7 @@ $theme = $_POST["theme"]; // This is the interface theme.
 $database_location = $_POST["databaselocation"]; // This is the file path to the item database.
 $required_user = $_POST["requireduser"]; // This is the optional required username to access this instance.
 $instance_name = $_POST["instancename"]; // This is the display name of this instance.
+$instance_tagline = $_POST["instancetagline"]; // This is the displayed tagline of this instance.
 $credit_level = $_POST["creditlevel"]; // This is the level of credit given to V0LT on the main page.
 
 
@@ -32,6 +33,7 @@ if ($theme != null) { // Check to see if information was input through the form.
     $config["database_location"] = $database_location;
     $config["required_user"] = $required_user;
     $config["instance_name"] = $instance_name;
+    $config["instance_tagline"] = $instance_tagline;
     $config["credit_level"] = $credit_level;
     file_put_contents("./configdatabase.txt", serialize($config)); // Write database changes to disk.
 }
@@ -69,6 +71,8 @@ if ($theme != null) { // Check to see if information was input through the form.
             <label for="requireduser">Required Username: </label><input id="requireduser" name="requireduser" type="text" value="<?php echo $config["required_user"]; ?>" placeholder="Required User">
             <br><br>
             <label for="instancename">Instance Name: </label><input id="instancename" name="instancename" type="text" value="<?php echo $config["instance_name"]; ?>" placeholder="Instance Name">
+            <br><br>
+            <label for="instancetagline">Instance Tagline: </label><input id="instancetagline" name="instancetagline" type="text" value="<?php echo $config["instance_tagline"]; ?>" placeholder="Instance Tagline">
             <br><br>
             <label for='creditlevel'>Credit Level:</label>
             <select id='creditlevel' name='creditlevel'>

@@ -105,7 +105,7 @@ file_put_contents($config["database_location"], serialize($item_database)); // W
             <div class="button"><a href="tools.php">Tools</a></div>
         </div>
         <h1 class="title"><?php echo $config["instance_name"]; ?></h1> 
-        <h3 class="subtitle">Organize and keep track of your possessions.</h3>
+        <h3 class="subtitle"><?php echo $config["instance_tagline"]; ?></h3>
         <?php
             if ($config["credit_level"] == "high") {
                 echo '<div style="position:fixed;right:0;bottom:0;margin-right:10px;margin-bottom:10px;padding-left:5px;padding-right:5px;border-radius:5px;background:rgba(0, 0, 0, 0.75);"><p style="margin-bottom:7px;margin-top:7px;"><a href="https://v0lttech.com/madebyv0lt.php" style="text-decoration:underline;color:white;">Made by V0LT</a></p></div>';
