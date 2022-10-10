@@ -85,6 +85,9 @@ Home Index has various built in tools. To get to these tools, navigate to the ma
     1. Configuration
         - The configuration tool allows the user to customize their Home Index instance.
         - The configuration process is described in a different documentation section.
+    2. About
+        - The 'about' tool allows the user to view information related to their Home Index instance.
+        - This is useful for debugging purposes, and can help document and solve problems.
 - Developer Tools
     1. Dump Formatted Database
         - This tool simply takes the item database and dumps its contents in a formatted table.
