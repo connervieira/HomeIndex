@@ -22,7 +22,6 @@ if ($config["required_user"] != "") { // Check to see if a required username has
 
 
 // Load and initialize the database.
-
 if (file_exists($config["database_location"]) == false) { // If the database file doesn't exist, create it.
     $item_database_file = fopen($config["database_location"], "w") or die("Unable to create database file!"); // Create the file.
     fwrite($item_database_file, "a:0:{}"); // Set the contents of the database file to a blank database.
