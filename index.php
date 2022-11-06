@@ -153,8 +153,8 @@ include "./organizedatabase.php"; // Execute the database organization script.
                                 echo "<div class='container'>";
                                 echo "<a class='sectiontitle' href='?location=" . $location_name . "&space=" . $space_name . "&container=" . $container_name . "'><h3 id='" . $location_name . "-" . $space_name . "-" . $container_name . "'>" . $container_name . "</h3></a>";
                                 foreach ($item_database["locations"][$location_name]["spaces"][$space_name]["containers"][$container_name]["items"] as $item_name => $item_information) {
-                                    echo "<div class='item'>";
-                                    echo "<h4>" . $item_name . "</h4>";
+                                    echo "<div class='item' id='" . $location_name . " - " . $space_name . " - " . $container_name . " - " . $item_name . "'>";
+                                    echo "<h4 id='" . $location_name . " - " . $space_name . " - " . $container_name . " - " . $item_name . "'>" . $item_name . "</h4>";
                                     echo "<p>" . $item_information["description"] . "</p>";
                                     echo "<p>Quantity: " . $item_information["quantity"] . " $" . $item_information["value"] . " ($" . intval($item_information["quantity"]) * floatval($item_information["value"]) . ")</p>";
                                     echo "<a class='button' href='?location=" . $location_name . "&space=" . $space_name . "&container=" . $container_name . "&name=" . $item_name . "&value=" . $item_information["value"] . "&quantity=" . $item_information["quantity"] . "&description=" . $item_information["description"] . "'>Edit</a>";

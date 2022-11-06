@@ -135,6 +135,7 @@ if ($search_string !== "" and $search_string !== null) { // Only run search proc
                         <h3>" . $sorted_items[$x]["name"] . "</h3>
                         <p>Difference Score: " . $sorted_items[$x]["search_score"] . "</p>
                         <p>Located in <b>" . $sorted_items[$x]["container"] . "</b> in <b>" . $sorted_items[$x]["space"] . "</b> in <b>" . $sorted_items[$x]["location"] . "</b>.</p>
+                        <a class='button' href='./index.php#" . $sorted_items[$x]["location"] . " - " . $sorted_items[$x]["space"] . " - " . $sorted_items[$x]["container"] . " - " . $sorted_items[$x]["name"] . "'>Link</a><br><br>
                     </div>
                     ";
                 }

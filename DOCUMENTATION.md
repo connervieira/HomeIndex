@@ -99,6 +99,7 @@ Home Index has various built in tools. To get to these tools, navigate to the ma
         - The Search Items tool allows you to quickly find items in the database based on a search term.
         - The most likely search results are displayed at the top, with their name, location, and "difference score".
             - The higher the difference score, the less likely the result is to match.
+        - The 'Link' button will directly link to the location of the item on the main page to make editing or deleting quick and easy.
         - The number of displayed results can be customized in the configuration.
 - Data Management
     1. Move Container
