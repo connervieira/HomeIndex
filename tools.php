@@ -26,7 +26,7 @@ if ($config["required_user"] != "") { // Check to see if a required username has
     <head>
 	    <meta charset="utf-8">
 	    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Home Index</title>
+        <title>Home Index - Tools</title>
         <link rel="stylesheet" type="text/css" href="./styles/main.css">
         <link rel="stylesheet" type="text/css" href="./styles/themes/<?php echo $config["theme"]; ?>.css">
     </head>
@@ -41,6 +41,9 @@ if ($config["required_user"] != "") { // Check to see if a required username has
         <h2>Main Tools</h2>
         <a class="button" href='./configuration.php'>Configuration</a>
         <a class="button" href='./about.php'>About</a>
+
+        <h2>Data Management</h2>
+        <a class="button" href='./movecontainer.php'>Move Container</a>
 
         <br><br>
         <h2>Advanced Tools</h2>

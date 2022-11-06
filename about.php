@@ -63,7 +63,7 @@ foreach ($item_database["locations"] as $location_name => $location_information)
 
     <body>
         <div class="button-container">
-            <div class="button"><a href="index.php">Back</a></div>
+            <a class="button" href="index.php">Back</a>
         </div>
 
         <div class="about-container">
