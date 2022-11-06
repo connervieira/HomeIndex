@@ -38,10 +38,11 @@ a {
 
 .new-item {
     text-align: center;
-    width: 80%;
+    padding: 15px;
+    margin-right: 10%;
     margin-left: 10%;
-    padding:15px;
-    border-radius:15px;
+    margin-top: 30px;
+    border-radius: 15px;
 }
 
 .location {

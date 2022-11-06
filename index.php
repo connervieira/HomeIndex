@@ -135,16 +135,16 @@ file_put_contents($config["database_location"], serialize($item_database)); // W
         <hr>
         <div class="new-item">
             <form method="POST">
-                <label for="location">Location: </label><input type="text" name="location" id="location" placeholder="Location" value="<?php echo $displayed_location; ?>" required>
-                <label for="space">Space: </label><input type="text" name="space" id="space" placeholder="Space" value="<?php echo $displayed_space; ?>" required>
-                <label for="container">Container: </label><input type="text" name="container" id="container" placeholder="Container" value="<?php echo $displayed_container; ?>" required>
+                <label for="location">Location: </label><input type="text" name="location" id="location" placeholder="Location" value="<?php echo $displayed_location; ?>" required><br>
+                <label for="space">Space: </label><input type="text" name="space" id="space" placeholder="Space" value="<?php echo $displayed_space; ?>" required><br>
+                <label for="container">Container: </label><input type="text" name="container" id="container" placeholder="Container" value="<?php echo $displayed_container; ?>" required><br>
                 <hr>
-                <label for="name">Name: </label><input type="text" name="name" id="Name" placeholder="Name" value="<?php echo $displayed_name; ?>" required>
-                <label for="description">Description: </label><input type="text" name="description" id="Description" placeholder="Description" value="<?php echo $displayed_description; ?>">
-                <label for="quantity">Quantity: </label><input type="number" name="quantity" id="Quantity" placeholder="Quantity" value="<?php if ($displayed_quantity !== "" and $displayed_quantity !== null) { echo $displayed_quantity; } else { echo "1"; } ?>" required>
+                <label for="name">Name: </label><input type="text" name="name" id="Name" placeholder="Name" value="<?php echo $displayed_name; ?>" required><br>
+                <label for="description">Description: </label><input type="text" name="description" id="Description" placeholder="Description" value="<?php echo $displayed_description; ?>"><br>
+                <label for="quantity">Quantity: </label><input type="number" name="quantity" id="Quantity" placeholder="Quantity" value="<?php if ($displayed_quantity !== "" and $displayed_quantity !== null) { echo $displayed_quantity; } else { echo "1"; } ?>" required><br>
                 <label for="value">Value: </label><input type="number" name="value" id="Value" placeholder="Value" step="0.01" value="<?php if ($displayed_value !== "" and $displayed_value !== null) { echo $displayed_value; } else { echo "0"; } ?>" required>
                 <br><br>
-                <input type="submit" value="Add Item">
+                <input class="button" type="submit" value="Submit Item">
             </form>
         </div>
 
