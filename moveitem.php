@@ -70,21 +70,29 @@ if ($new_item == "" or $new_item == null) { // Check to see if the new item name
 
 
 if ($old_location !== null and $old_location !== "" and $old_space !== null and $old_space !== "" and $old_container !== null and $old_container !== "") { // Check to see if information was entered for the old container information.
-    if ($new_location !== null and $new_location !== "") { // Check to make sure a new location was specified.
-        if ($new_space !== null and $new_space !== "") { // Check to make sure a new space was specified.
-            if ($new_item !== null and $new_item !== "") { // Check to make sure a new item was specified.
-                $item_database["locations"][$new_location]["spaces"][$new_space]["containers"][$new_container]["items"][$new_item] = $item_database["locations"][$old_location]["spaces"][$old_space]["containers"][$old_container]["items"][$old_item]; // Move the original item's information to the new item.
-                unset($item_database["locations"][$old_location]["spaces"][$old_space]["containers"][$old_container]["items"][$old_item]); // Remove the item from the old location.
-                file_put_contents($config["database_location"], serialize($item_database)); // Write database changes to disk.
-                echo "<p>Successfully moved item.</p>";
+    if ($old_location !== $new_location or $old_space !== $new_space or $old_container !== $new_container or $old_item !== $new_item) { // Check to make sure some aspect has been changed.
+        if ($new_location !== null and $new_location !== "") { // Check to make sure a new location was specified.
+            if ($new_space !== null and $new_space !== "") { // Check to make sure a new space was specified.
+                if ($new_item !== null and $new_item !== "") { // Check to make sure a new item was specified.
+                    if (isset($item_database["locations"][$old_location]["spaces"][$old_space]["containers"][$old_container]["items"][$old_item]) == true) { // Check to make sure the specified item actually exists.
+                        $item_database["locations"][$new_location]["spaces"][$new_space]["containers"][$new_container]["items"][$new_item] = $item_database["locations"][$old_location]["spaces"][$old_space]["containers"][$old_container]["items"][$old_item]; // Move the original item's information to the new item.
+                        unset($item_database["locations"][$old_location]["spaces"][$old_space]["containers"][$old_container]["items"][$old_item]); // Remove the item from the old location.
+                        file_put_contents($config["database_location"], serialize($item_database)); // Write database changes to disk.
+                        echo "<p>Successfully moved item.</p>";
+                    } else {
+                        echo "<p>The item specified does not exist.</p>";
+                    }
+                } else {
+                    echo "<p>No new item was specified.</p>";
+                }
             } else {
-                echo "<p>No new item was specified.</p>";
+                echo "<p>No new space was specified.</p>";
             }
         } else {
-            echo "<p>No new space was specified.</p>";
+            echo "<p>No new location was specified.</p>";
         }
     } else {
-        echo "<p>No new location was specified.</p>";
+        echo "<p>The item was unchanged.</p>";
     }
 }
 

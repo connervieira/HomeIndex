@@ -14,4 +14,4 @@ This is an informal to do list for Home Index. This list is not an official chan
     - [X] Add container renaming and moving.
     - [X] Add item renaming and moving.
 - [X] Add search tool.
-- [ ] Add item and container moving validation.
+- [X] Add item and container moving/renaming validation.

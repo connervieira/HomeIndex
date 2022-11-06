@@ -64,18 +64,25 @@ if ($new_container == "" or $new_container == null) { // Check to see if the new
 
 
 if ($old_location !== null and $old_location !== "" and $old_space !== null and $old_space !== "" and $old_container !== null and $old_container !== "") { // Check to see if information was entered for the old container information.
-    if ($new_location !== null and $new_location !== "") { // Check to make sure a new location was specified.
-        if ($new_space !== null and $new_space !== "") { // Check to make sure a new space was specified.
-            $item_database["locations"][$new_location]["spaces"][$new_space]["containers"][$new_container] = $item_database["locations"][$old_location]["spaces"][$old_space]["containers"][$old_container]; // Move the original container's information to the new container.
-            unset($item_database["locations"][$old_location]["spaces"][$old_space]["containers"][$old_container]); // Remove the container from the old location.
-            file_put_contents($config["database_location"], serialize($item_database)); // Write database changes to disk.
-            echo "<p>Successfully moved container.</p>";
-    
+    if ($old_location !== $new_location or $old_space !== $new_space or $old_container !== $new_container) {
+        if ($new_location !== null and $new_location !== "") { // Check to make sure a new location was specified.
+            if ($new_space !== null and $new_space !== "") { // Check to make sure a new space was specified.
+                if (isset($item_database["locations"][$old_location]["spaces"][$old_space]["containers"][$old_container]) == true) { // Check to make sure the specified container actually exists.
+                    $item_database["locations"][$new_location]["spaces"][$new_space]["containers"][$new_container] = $item_database["locations"][$old_location]["spaces"][$old_space]["containers"][$old_container]; // Move the original container's information to the new container.
+                    unset($item_database["locations"][$old_location]["spaces"][$old_space]["containers"][$old_container]); // Remove the container from the old location.
+                    file_put_contents($config["database_location"], serialize($item_database)); // Write database changes to disk.
+                    echo "<p>Successfully moved container.</p>";
+                } else {
+                    echo "<p>The container specified does not exist.</p>";
+                }
+            } else {
+                echo "<p>No new space was specified.</p>";
+            }
         } else {
-            echo "<p>No new space was specified.</p>";
+            echo "<p>No new location was specified.</p>";
         }
     } else {
-        echo "<p>No new location was specified.</p>";
+        echo "<p>The container was unchanged.</p>";
     }
 }
 
