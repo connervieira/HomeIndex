@@ -27,6 +27,7 @@ $instance_name = $_POST["instancename"]; // This is the display name of this ins
 $instance_tagline = $_POST["instancetagline"]; // This is the displayed tagline of this instance.
 $credit_level = $_POST["creditlevel"]; // This is the level of credit given to V0LT on the main page.
 $display_advanced_tools = $_POST["displayadvancedtools"]; // This determines whether or not the advanced tools section will be displayed on the tools page.
+$displayed_search_results_count = $_POST["displayedsearchresultscount"]; // This is the number of results that will be displayed in the Search tool.
 
 
 if ($display_advanced_tools == "on") {
@@ -44,6 +45,7 @@ if ($theme != null) { // Check to see if information was input through the form.
     $config["instance_tagline"] = $instance_tagline;
     $config["credit_level"] = $credit_level;
     $config["display_advanced_tools"] = $display_advanced_tools;
+    $config["displayed_search_results_count"] = $displayed_search_results_count;
     file_put_contents("./configdatabase.txt", serialize($config)); // Write database changes to disk.
 }
 
@@ -91,6 +93,8 @@ if ($theme != null) { // Check to see if information was input through the form.
             </select>
             <br><br>
             <label for="displayadvancedtools">Display Advanced Tools: </label><input id="displayadvancedtools" name="displayadvancedtools" type="checkbox" <?php if ($config["display_advanced_tools"] == true) { echo "checked"; } ?>>
+            <br><br>
+            <label for="displayedsearchresultscount">Displayed Search Results: </label><input id="displayedsearchresultscount" name="displayedsearchresultscount" type="number" placeholder="Displayed Search Results Count" value="<?php echo $config["displayed_search_results_count"]; ?>">
             <br><br>
             <input type="submit" value="Submit">
         </form>

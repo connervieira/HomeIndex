@@ -16,6 +16,7 @@ if (file_exists("./configdatabase.txt") == false) { // If the database file does
     $config["instance_tagline"] = "Organize your personal possessions";
     $config["credit_level"] = "high";
     $config["display_advanced_tools"] = false;
+    $config["displayed_search_results_count"] = 5;
     file_put_contents("./configdatabase.txt", serialize($config)); // Write the configuration database to disk.
 
 } else { // Otherwise, the file exists, so load the configuration database from disk.

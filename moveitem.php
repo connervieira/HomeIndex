@@ -38,8 +38,6 @@ if (file_exists($config["database_location"]) == true) { // Check to see if the 
 
 
 
-// Process any information submitted to the 'item creation' form.
-
 // Collect any information from the form that may have been submitted.
 $old_location = $_POST["location1"]; // This is the location the container is in.
 $old_space = $_POST["space1"]; // This is the space the container is in.

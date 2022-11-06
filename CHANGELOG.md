@@ -25,12 +25,17 @@ October 12th, 2022
     - Locations, spaces, containers, and items can now be clicked to automatically fill their values into the item adding form.
 - Improved styling.
     - Buttons now appear more consistent and recognizable.
+        - Buttons on the Tools page now appear side by side for sake of space efficiency.
     - The darker theme contains darker form elements.
     - Forms now use more mobile-friendly layouts and styles with bigger touch points.
-- Added container renaming and moving.
-- Added item renaming and moving.
-- Added plain text item listing tool.
+- Added several new tools.
+    - Added plain text item listing tool.
+    - Added item searching tool.
+    - Added support for object moving and renaming.
+        - Added container renaming and moving tool.
+        - Added item renaming and moving tool.
 - Separated the database organization process into a separate script that is run every time the main page is loaded.
 - Added additional statistics to the About tool.
     - The total number of locations, spaces, and containers are now displayed along side the total item count.
     - The total value of all items in the database is now calculated and displayed.
+- Added a configuration value to enable or disable the Advanced Tools section on the Tools page.

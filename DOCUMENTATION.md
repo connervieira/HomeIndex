@@ -49,8 +49,10 @@ Here you can learn how to install and use Home Index.
     - **Container**: This is the specific container than an item is in.
         - Examples: 'Dresser', 'First Aid Kit', 'Tool Box', 'Top Left Drawer'
     - **Name**: This is the name of the item itself.
-        - This name should be unique in it's container.
-        - Examples: 'College Sweatshirt', 'Bandaids', 'Screwdriver', 'Phonebook'
+        - This name is unique in it's container.
+            - Entering a duplicate name will overwrite the existing item.
+        - Ideally this name should be thorough and descriptive to make searching easier.
+        - Examples: 'XYZ College Sweatshirt', 'XYZ Brand Adhesive Bandages', 'Orange Ratchet Screwdriver', '2012 Phonebook'
     - **Description**: This field is optional, and contains a description of the item.
         - If you have any special notes about the nature of location of a particular item, you can put those notes here.
     - **Quantity**: This field contains the quantity of a particular item.
@@ -93,6 +95,11 @@ Home Index has various built in tools. To get to these tools, navigate to the ma
     1. List Items
         - The List Items tool simply outputs the entire item database in a plain text list.
         - This tool is useful for getting a general overview of your items, or for creating an easily shareable and printable format.
+    2. Search Items
+        - The Search Items tool allows you to quickly find items in the database based on a search term.
+        - The most likely search results are displayed at the top, with their name, location, and "difference score".
+            - The higher the difference score, the less likely the result is to match.
+        - The number of displayed results can be customized in the configuration.
 - Data Management
     1. Move Container
         - This tool allows the user to move or rename a container.

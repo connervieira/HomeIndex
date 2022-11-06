@@ -46,6 +46,7 @@ if ($config["required_user"] != "") { // Check to see if a required username has
             <br><br>
             <h2>Data Viewing</h2>
             <a class="button" href='./listitems.php'>List Items</a>
+            <a class="button" href='./searchitems.php'>Search Items</a>
 
             <br><br>
             <h2>Data Management</h2>
