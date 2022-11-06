@@ -77,16 +77,17 @@ if ($confirm == "true") {
     </head>
 
     <body>
-        <?php
-            if ($confirm == "true") {
-                echo "<p>Item deleted</h3>";
-                echo "<div class='button'><a href='./index.php'>Back</a></div>";
-            } else {
-                echo "<p>Are you sure you want to delete this item?</h3>";
-                echo "<div class='button'><a href='./deleteitem.php?confirm=true&location=" . $location . "&space=" . $space . "&container=" . $container . "&item=" . $item . "'>Confirm</a></div>";
-                echo "<div class='button'><a href='./index.php'>Cancel</a></div>";
-            }
-        ?>
-
+        <main>
+            <?php
+                if ($confirm == "true") {
+                    echo "<p>Item deleted</h3>";
+                    echo "<a class='button' href='./index.php'>Back</a>";
+                } else {
+                    echo "<p>Are you sure you want to delete this item?</h3>";
+                    echo "<a class='button' href='./deleteitem.php?confirm=true&location=" . $location . "&space=" . $space . "&container=" . $container . "&item=" . $item . "'>Confirm</a>";
+                    echo "<a class='button' href='./index.php'>Cancel</a>";
+                }
+            ?>
+        </main>
     </body>
 </html>
