@@ -109,7 +109,7 @@ if ($old_location !== null and $old_location !== "" and $old_space !== null and 
             <div class="button-container">
                 <a class="button" href="./tools.php">Back</a>
             </div>
-            <h1>Move Container</h1>
+            <h1>Move Item</h1>
             <hr>
             <div class="new-item">
                 <form method="POST">
