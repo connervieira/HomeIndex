@@ -12,5 +12,5 @@ This is an informal to do list for Home Index. This list is not an official chan
 - [ ] Add plain text item list tool.
 - [ ] Add moving and renaming.
     - [X] Add container moving.
-    - [ ] Add container renaming.
+    - [X] Add container renaming.
     - [ ] Add item moving.

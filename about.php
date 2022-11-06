@@ -56,7 +56,7 @@ foreach ($item_database["locations"] as $location_name => $location_information)
     <head>
 	    <meta charset="utf-8">
 	    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Home Index</title>
+        <title><?php echo $config["instance_name"]; ?> - About</title>
         <link rel="stylesheet" type="text/css" href="./styles/main.css">
         <link rel="stylesheet" type="text/css" href="./styles/themes/<?php echo $config["theme"]; ?>.css">
     </head>
