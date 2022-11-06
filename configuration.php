@@ -26,6 +26,14 @@ $required_user = $_POST["requireduser"]; // This is the optional required userna
 $instance_name = $_POST["instancename"]; // This is the display name of this instance.
 $instance_tagline = $_POST["instancetagline"]; // This is the displayed tagline of this instance.
 $credit_level = $_POST["creditlevel"]; // This is the level of credit given to V0LT on the main page.
+$display_advanced_tools = $_POST["displayadvancedtools"]; // This determines whether or not the advanced tools section will be displayed on the tools page.
+
+
+if ($display_advanced_tools == "on") {
+    $display_advanced_tools = true;
+} else {
+    $display_advanced_tools = false;
+}
 
 
 if ($theme != null) { // Check to see if information was input through the form.
@@ -35,6 +43,7 @@ if ($theme != null) { // Check to see if information was input through the form.
     $config["instance_name"] = $instance_name;
     $config["instance_tagline"] = $instance_tagline;
     $config["credit_level"] = $credit_level;
+    $config["display_advanced_tools"] = $display_advanced_tools;
     file_put_contents("./configdatabase.txt", serialize($config)); // Write database changes to disk.
 }
 
@@ -80,6 +89,8 @@ if ($theme != null) { // Check to see if information was input through the form.
                 <option value='low' <?php if ($config["credit_level"] == "low") { echo "selected"; } ?>>Low</option>
                 <option value='off' <?php if ($config["credit_level"] == "off") { echo "selected"; } ?>>Off</option>
             </select>
+            <br><br>
+            <label for="displayadvancedtools">Display Advanced Tools: </label><input id="displayadvancedtools" name="displayadvancedtools" type="checkbox" <?php if ($config["display_advanced_tools"] == true) { echo "checked"; } ?>>
             <br><br>
             <input type="submit" value="Submit">
         </form>

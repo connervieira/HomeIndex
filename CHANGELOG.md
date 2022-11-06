@@ -30,3 +30,6 @@ October 12th, 2022
 - Added container renaming and moving.
 - Added plain text item listing tool.
 - Separated the database organization process into a separate script that is run every time the main page is loaded.
+- Added additional statistics to the About tool.
+    - The total number of locations, spaces, and containers are now displayed along side the total item count.
+    - The total value of all items in the database is now calculated and displayed.

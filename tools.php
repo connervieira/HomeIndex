@@ -32,28 +32,36 @@ if ($config["required_user"] != "") { // Check to see if a required username has
     </head>
 
     <body>
-        <div class="button-container">
-            <a class="button" href="index.php">Back</a>
-        </div>
+        <main>
+            <div class="button-container">
+                <a class="button" href="index.php">Back</a>
+            </div>
 
-        <h1>Tools</h1>
+            <h1>Tools</h1>
 
-        <h2>Main Tools</h2>
-        <a class="button" href='./configuration.php'>Configuration</a>
-        <a class="button" href='./about.php'>About</a>
+            <h2>General Tools</h2>
+            <a class="button" href='./configuration.php'>Configuration</a>
+            <a class="button" href='./about.php'>About</a>
 
-        <br><br>
-        <h2>Data Viewing</h2>
-        <a class="button" href='./listitems.php'>List Items</a>
+            <br><br>
+            <h2>Data Viewing</h2>
+            <a class="button" href='./listitems.php'>List Items</a>
 
-        <br><br>
-        <h2>Data Management</h2>
-        <a class="button" href='./movecontainer.php'>Move Container</a>
-        <a class="button" href='./moveitem.php'>Move Item</a>
+            <br><br>
+            <h2>Data Management</h2>
+            <a class="button" href='./movecontainer.php'>Move Container</a>
+            <a class="button" href='./moveitem.php'>Move Item</a>
 
-        <br><br>
-        <h2>Advanced Tools</h2>
-        <a class="button" href='./dumpdatabase.php'>Dump Formatted Database</a>
-        <a class="button" href='./dumpraw.php'>Dump Raw Database</a>
+            <?php
+            if ($config["display_advanced_tools"] == true) { // Only display the Advanced Tools section if the configuration specifies to do so.
+                echo '
+                <br><br>
+                <h2>Advanced Tools</h2>
+                <a class="button" href="./dumpdatabase.php">Dump Formatted Database</a>
+                <a class="button" href="./dumpraw.php">Dump Raw Database</a>
+                ';
+            }
+            ?>
+        </main>
     </body>
 </html>
