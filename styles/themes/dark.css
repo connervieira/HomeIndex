@@ -9,6 +9,12 @@ input {
     border-color: #222222;
 }
 
+select {
+    background: #000000;
+    color: #ffffff;
+    border-color: #222222;
+}
+
 
 .button {
     border-style: solid;

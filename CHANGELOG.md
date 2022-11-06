@@ -23,3 +23,7 @@ October 12th, 2022
 
 - Improved editing process.
     - Locations, spaces, containers, and items can now be clicked to automatically fill their values into the item adding form.
+- Improved styling.
+    - Buttons now appear more consistent and recognizable.
+    - The darker theme contains darker form elements.
+    - Forms now use more mobile-friendly layouts and styles.
