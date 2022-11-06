@@ -123,6 +123,7 @@ if ($search_string !== "" and $search_string !== null) { // Only run search proc
                     <input class="button" type="submit" value="Submit">
                 </form>
             </div>
+            <br><hr><br>
             <?php
             if (sizeof($sorted_items) > 0) { // Only display the search results if there are search results to begin with.
                 if (sizeof($sorted_items) < $config["displayed_search_results_count"]) { // Check to see if the number of results to display is bigger than the size of the results themselves.
