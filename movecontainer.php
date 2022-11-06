@@ -98,7 +98,7 @@ if ($old_location !== null and $old_location !== "" and $old_space !== null and 
     <body>
         <main>
             <div class="button-container">
-                <a class="button" href="index.php">Back</a>
+                <a class="button" href="./tools.php">Back</a>
             </div>
             <h1>Move Container</h1>
             <hr>
@@ -108,9 +108,9 @@ if ($old_location !== null and $old_location !== "" and $old_space !== null and 
                     <label for="space1">Original Space: </label><input type="text" name="space1" id="space1" placeholder="Starting Space" required><br>
                     <label for="container1">Original Container Name: </label><input type="text" name="container1" id="container1" placeholder="Original Container" required><br>
                     <hr>
-                    <label for="location2">New Location: </label><input type="text" name="location2" id="location2" placeholder="Ending Location" required><br>
-                    <label for="space2">New Space: </label><input type="text" name="space2" id="space2" placeholder="Ending Space" required><br>
-                    <label for="container2">New Container Name: </label><input type="text" name="container2" id="container2" placeholder="Ending Container" required><br>
+                    <label for="location2">New Location: </label><input type="text" name="location2" id="location2" placeholder="Ending Location"><br>
+                    <label for="space2">New Space: </label><input type="text" name="space2" id="space2" placeholder="Ending Space"><br>
+                    <label for="container2">New Container Name: </label><input type="text" name="container2" id="container2" placeholder="Ending Container"><br>
                     <br><br>
                     <input class="button" type="submit" value="Submit">
                 </form>

@@ -21,6 +21,7 @@ if ($config["required_user"] != "") { // Check to see if a required username has
 
 
 
+
 // Load and initialize the database.
 if (file_exists($config["database_location"]) == false) { // If the database file doesn't exist, create it.
     $item_database_file = fopen($config["database_location"], "w") or die("Unable to create database file!"); // Create the file.
@@ -85,27 +86,15 @@ $item_information = ["description" => $description, "quantity" => intval($quanti
 
 
 // Add the item to the item database.
-if ($location != null) { // Check to see if form data has been submitted.
+if ($location != null and $space != null and $container != null) { // Check to see if form data has been submitted.
     $item_database["locations"][$location]["spaces"][$space]["containers"][$container]["items"][$name] = $item_information; // Append the item to the loaded item database.
+    file_put_contents($config["database_location"], serialize($item_database)); // Write database changes to disk.
 }
 
 
-// Sort the item database.
-foreach ($item_database["locations"] as $location_name => $location_information) { // Iterate through all the locations in the database.
-    foreach ($item_database["locations"][$location_name]["spaces"] as $space_name => $space_information) { // Iterate through all the spaces in the database.
-        foreach ($item_database["locations"][$location_name]["spaces"][$space_name]["containers"] as $container_name => $container_information) { // Iterate through all the containers in the database.
-            ksort($item_database["locations"][$location_name]["spaces"][$space_name]["containers"][$container_name]["items"]); // Sort the items.
-        }
-        ksort($item_database["locations"][$location_name]["spaces"][$space_name]["containers"]); // Sort the containers.
-    }
-    ksort($item_database["locations"][$location_name]["spaces"]); // Sort the containers.
-}
-if (isset($item_database["locations"]) == true) { // Only sort the locations if the locations field exists at all.
-    ksort($item_database["locations"]); // Sort the locations.
-}
 
 
-file_put_contents($config["database_location"], serialize($item_database)); // Write database changes to disk.
+include "./organizedatabase.php"; // Execute the database organization script.
 ?>
 
 

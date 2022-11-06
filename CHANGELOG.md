@@ -26,6 +26,7 @@ October 12th, 2022
 - Improved styling.
     - Buttons now appear more consistent and recognizable.
     - The darker theme contains darker form elements.
-    - Forms now use more mobile-friendly layouts and styles.
+    - Forms now use more mobile-friendly layouts and styles with bigger touch points.
 - Added container renaming and moving.
 - Added plain text item listing tool.
+- Separated the database organization process into a separate script that is run every time the main page is loaded.

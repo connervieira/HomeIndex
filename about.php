@@ -36,14 +36,23 @@ if (file_exists($config["database_location"]) == true) { // Check to see if the 
 
 
 
-// Count the number of items in the database.
-$database_item_count = 0;
 
+$database_location_count = 0;
+$database_space_count = 0;
+$database_container_count = 0;
+$database_item_count = 0;
+$database_value = 0;
+
+// Iterate through all items in the database.
 foreach ($item_database["locations"] as $location_name => $location_information) { // Iterate through all the locations in the database.
+    $database_location_count = $database_location_count + 1; // Increment the location counter by 1.
     foreach ($item_database["locations"][$location_name]["spaces"] as $space_name => $space_information) { // Iterate through all the spaces in the database.
+        $database_space_count = $database_space_count + 1; // Increment the space counter by 1.
         foreach ($item_database["locations"][$location_name]["spaces"][$space_name]["containers"] as $container_name => $container_information) { // Iterate through all the containers in the database.
+            $database_container_count = $database_container_count + 1; // Increment the container counter by 1.
             foreach ($item_database["locations"][$location_name]["spaces"][$space_name]["containers"][$container_name]["items"] as $item_name => $item_information) { // Iterate through all the items in the database.
                 $database_item_count = $database_item_count + 1; // Increment the item counter by 1.
+                $database_value = $database_value + ($item_information["quantity"] * $item_information["value"]);
             }
         }
     }
@@ -63,7 +72,7 @@ foreach ($item_database["locations"] as $location_name => $location_information)
 
     <body>
         <div class="button-container">
-            <a class="button" href="index.php">Back</a>
+            <a class="button" href="./tools.php">Back</a>
         </div>
 
         <div class="about-container">
@@ -84,7 +93,14 @@ foreach ($item_database["locations"] as $location_name => $location_information)
                     echo "<p>Modified Tagline: " . $config["instance_name"] . "</p>";
                 }
             ?>
-            <p>Database Item Count: <?php echo $database_item_count; ?> </p>
+
+            <br>
+            <h2>Database Information</h2>
+            <p>Database Location Count: <?php echo $database_location_count; ?></p>
+            <p>Database Space Count: <?php echo $database_space_count; ?></p>
+            <p>Database Container Count: <?php echo $database_container_count; ?></p>
+            <p>Database Item Count: <?php echo $database_item_count; ?></p>
+            <p>Database Item Value: $<?php echo $database_value; ?></p>
 
             <br>
             <h2>Configuration Information</h2>

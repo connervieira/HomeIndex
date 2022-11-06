@@ -20,22 +20,19 @@ if ($config["required_user"] != "") { // Check to see if a required username has
 
 
 
-
 // Load and initialize the database.
-
-if (file_exists("./itemdatabase.txt") == false) { // If the database file doesn't exist, create it.
-    $item_database_file = fopen("itemdatabase.txt", "w") or die("Unable to create database file!"); // Create the file.
+if (file_exists($config["database_location"]) == false) { // If the database file doesn't exist, create it.
+    $item_database_file = fopen($config["database_location"], "w") or die("Unable to create database file!"); // Create the file.
     fwrite($item_database_file, "a:0:{}"); // Set the contents of the database file to a blank database.
     fclose($item_database_file); // Close the database file.
 }
 
-if (file_exists("./itemdatabase.txt") == true) { // Check to see if the item database file exists. The database should have been created in the previous step if it didn't already exists.
-    $item_database = unserialize(file_get_contents('./itemdatabase.txt')); // Load the database from the disk.
+if (file_exists($config["database_location"]) == true) { // Check to see if the item database file exists. The database should have been created in the previous step if it didn't already exists.
+    $item_database = unserialize(file_get_contents($config["database_location"])); // Load the database from the disk.
 } else {
     echo "<p>The database failed to load</p>"; // Inform the user that the database failed to load.
     exit(); // Terminate the script.
 }
-
 
 
 
@@ -62,7 +59,7 @@ if ($confirm == "true") {
         unset($item_database["locations"][$location]); // Remove the empty location.
     }
 
-    file_put_contents("./itemdatabase.txt", serialize($item_database)); // Write database changes to disk
+    file_put_contents($config["database_location"], serialize($item_database)); // Write database changes to disk.
 }
 
 
