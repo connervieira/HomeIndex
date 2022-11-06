@@ -62,11 +62,12 @@ Here you can learn how to install and use Home Index.
 
 ### Modifying Items
 
+Note: It is not possible to change the name of an item by editing it. Instead, use the 'Move Item' tool for this process.
+
 1. Locate the item you want to modify.
-2. Note the item's exact location, space, container, and name.
-3. Enter the item's location, space, container, and name in the 'add item' form at the top of the main page.
-4. Enter an updated description, quantity, and value.
-5. Press 'Add Item' to overwrite the old item's information.
+2. Click the 'Edit' button to autofill the item's values in the item form at the top of the page.
+3. Enter an updated description, quantity, and value.
+4. Press 'Submit Item' to overwrite the old item's information.
 
 
 ### Deleting Items
@@ -81,14 +82,31 @@ Here you can learn how to install and use Home Index.
 
 Home Index has various built in tools. To get to these tools, navigate to the main Home Index page, and press the 'Tools' button at the top of the page.
 
-- Main Tools
+- General Tools
     1. Configuration
-        - The configuration tool allows the user to customize their Home Index instance.
+        - The Configuration tool allows the user to customize their Home Index instance.
         - The configuration process is described in a different documentation section.
     2. About
-        - The 'about' tool allows the user to view information related to their Home Index instance.
+        - The About tool allows the user to view information related to their Home Index instance.
         - This is useful for debugging purposes, and can help document and solve problems.
-- Developer Tools
+- Data Viewing
+    1. List Items
+        - The List Items tool simply outputs the entire item database in a plain text list.
+        - This tool is useful for getting a general overview of your items, or for creating an easily shareable and printable format.
+- Data Management
+    1. Move Container
+        - This tool allows the user to move or rename a container.
+        - All items and container information are preserved when using this tool.
+        - To use this tool, simply specify the container you want to modify by entering the location, space, and container name. Then, enter any updated information in the second part of the form.
+        - Any values that are left blank in the second part of the form will be re-used from the container's original values.
+            - For example, if you just want to change the name of a container, and leave it where it is, fill out its information in the first part of the form, then only fill out the 'New Container Name' field in the second part of the form. The new location and space will be left the same as the old location and space.
+    2. Move Item
+        - This tool allows the user to move or rename an item.
+        - All item information is preserved when using this tool.
+        - To use this tool, simply specify the item you want to modify by entering the location, space, container, and item name. Then, enter any updated information in the second part of the form.
+        - Any values that are left blank in the second part of the form will be re-used from the item's original values.
+            - For example, if you want to move the item, but not change its name, simply fill out the information in the first part of the form, then specify the new position information in the second part of the form. If the 'New Item Name' field is left blank, then the name will remain unchanged.
+- Advanced Tools
     1. Dump Formatted Database
         - This tool simply takes the item database and dumps its contents in a formatted table.
         - This tool is useful for debugging and sharing your database information.

@@ -10,7 +10,6 @@ This is an informal to do list for Home Index. This list is not an official chan
         - [X] Add 'Dump Raw Database' tool.
 - [X] Add more efficient editing method.
 - [X] Add plain text item list tool.
-- [ ] Add moving and renaming.
-    - [X] Add container moving.
-    - [X] Add container renaming.
-    - [ ] Add item moving.
+- [X] Add moving and renaming.
+    - [X] Add container renaming and moving.
+    - [X] Add item renaming and moving.

@@ -116,12 +116,12 @@ if ($old_location !== null and $old_location !== "" and $old_space !== null and 
                     <label for="location1">Original Location: </label><input type="text" name="location1" id="location1" placeholder="Starting Location" required><br>
                     <label for="space1">Original Space: </label><input type="text" name="space1" id="space1" placeholder="Starting Space" required><br>
                     <label for="container1">Original Container: </label><input type="text" name="container1" id="container1" placeholder="Original Container" required><br>
-                    <label for="item1">Original Item: </label><input type="text" name="item1" id="item1" placeholder="Original Item" required><br>
+                    <label for="item1">Original Item Name: </label><input type="text" name="item1" id="item1" placeholder="Original Item" required><br>
                     <hr>
                     <label for="location2">New Location: </label><input type="text" name="location2" id="location2" placeholder="Ending Location"><br>
                     <label for="space2">New Space: </label><input type="text" name="space2" id="space2" placeholder="Ending Space"><br>
                     <label for="container2">New Container: </label><input type="text" name="container2" id="container2" placeholder="Ending Container"><br>
-                    <label for="item2">New Item: </label><input type="text" name="item2" id="item2" placeholder="Ending Item Name"><br>
+                    <label for="item2">New Item Name: </label><input type="text" name="item2" id="item2" placeholder="Ending Item Name"><br>
                     <br><br>
                     <input class="button" type="submit" value="Submit">
                 </form>
