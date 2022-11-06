@@ -8,3 +8,4 @@ This is an informal to do list for Home Index. This list is not an official chan
     - [X] Add database dump tools.
         - [X] Add 'Dump Formatted Database' tool.
         - [X] Add 'Dump Raw Database' tool.
+- [X] Add more efficient editing method.

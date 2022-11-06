@@ -3,11 +3,16 @@ body {
     color: #ffffff;
 }
 
-a {
-    background: #333333;
+input {
+    background: #000000;
     color: #ffffff;
 }
 
+
+.button {
+    background: #000000;
+    text-decoration: none;
+}
 
 .new-item {
     background: #111111;

@@ -33,18 +33,18 @@ if ($config["required_user"] != "") { // Check to see if a required username has
 
     <body>
         <div class="button-container">
-            <div class="button"><a href="index.php">Back</a></div>
+            <a class="button" href="index.php">Back</a>
         </div>
 
         <h1>Tools</h1>
 
         <h2>Main Tools</h2>
-        <div class="button"><a href='./configuration.php'>Configuration</a></div>
-        <div class="button"><a href='./about.php'>About</a></div>
+        <a class="button" href='./configuration.php'>Configuration</a>
+        <a class="button" href='./about.php'>About</a>
 
-        <br>
-        <h2>Developer Tools</h2>
-        <div class="button"><a href='./dumpdatabase.php'>Dump Formatted Database</a></div>
-        <div class="button"><a href='./dumpraw.php'>Dump Raw Database</a></div>
+        <br><br>
+        <h2>Advanced Tools</h2>
+        <a class="button" href='./dumpdatabase.php'>Dump Formatted Database</a>
+        <a class="button" href='./dumpraw.php'>Dump Raw Database</a>
     </body>
 </html>

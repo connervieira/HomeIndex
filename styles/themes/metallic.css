@@ -8,11 +8,13 @@ body {
     color: #ffffff;
 }
 
-a {
-    background: #333333;
-    color: #ffffff;
-}
 
+.button {
+    background: #999999;
+    border-style: solid;
+    color: #000000;
+    text-decoration: none;
+}
 
 .new-item {
     border-style: solid;

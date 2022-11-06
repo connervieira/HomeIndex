@@ -54,7 +54,7 @@ if ($theme != null) { // Check to see if information was input through the form.
 
     <body>
         <div class="button-container">
-            <div class="button"><a href="index.php">Back</a></div>
+            <a class="button" href="index.php">Back</a>
         </div>
         <form method="POST">
             <label for='theme'>Theme:</label>

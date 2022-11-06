@@ -3,11 +3,13 @@ body {
     color: #ffffff;
 }
 
-a {
-    background: #ffffff;
-    color: #000000;
-}
 
+.button {
+    background: #ffffff;
+    border-style: solid;
+    color: #000000;
+    text-decoration: none;
+}
 
 .new-item {
     background: #ffffff;

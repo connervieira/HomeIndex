@@ -49,6 +49,15 @@ $description = $_POST["description"]; // This is the description of the item.
 $quantity = $_POST["quantity"]; // This is the quantity of the item.
 $value = $_POST["value"]; // This is the value of the item.
 
+// Collect any information from the URL that may have been submitted.
+$displayed_location = $_GET["location"]; // This is the location the item is in.
+$displayed_space = $_GET["space"]; // This is the space the item is in.
+$displayed_container = $_GET["container"]; // This is the container the item is in.
+$displayed_name = $_GET["name"]; // This is the name of the item.
+$displayed_description = $_GET["description"]; // This is the description of the item.
+$displayed_quantity = $_GET["quantity"]; // This is the quantity of the item.
+$displayed_value = $_GET["value"]; // This is the value of the item.
+
 
 // Sanitize inputs.
 $location = filter_var($location, FILTER_SANITIZE_STRING); // Sanitize the location string.
@@ -58,6 +67,17 @@ $name = filter_var($name, FILTER_SANITIZE_STRING); // Sanitize the name string.
 $description = filter_var($description, FILTER_SANITIZE_STRING); // Sanitize the description string.
 $quantity = filter_var($quantity, FILTER_SANITIZE_NUMBER_INT); // Sanitize the quantity integer number.
 $value = filter_var($value, FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION); // Sanitize the value floating point number.
+
+
+if ($displayed_location == "" or $displayed_location == null) { // If no location is set to be displayed, then fall back to the information from the last item.
+    $displayed_location = $location;
+}
+if ($displayed_space == "" or $displayed_space == null) { // If no space is set to be displayed, then fall back to the information from the last item.
+    $displayed_space = $space;
+}
+if ($displayed_container == "" or $displayed_container == null) { // If no container is set to be displayed, then fall back to the information from the last item.
+    $displayed_container = $container;
+}
 
 
 // Convert the item information into an array.
@@ -85,7 +105,7 @@ if (isset($item_database["locations"]) == true) { // Only sort the locations if 
 }
 
 
-file_put_contents($config["database_location"], serialize($item_database)); // Write database changes to disk
+file_put_contents($config["database_location"], serialize($item_database)); // Write database changes to disk.
 ?>
 
 
@@ -101,7 +121,7 @@ file_put_contents($config["database_location"], serialize($item_database)); // W
 
     <body>
         <div class="button-container">
-            <div class="button"><a href="tools.php">Tools</a></div>
+            <a class="button" href="tools.php">Tools</a>
         </div>
         <h1 class="title"><?php echo $config["instance_name"]; ?></h1> 
         <h3 class="subtitle"><?php echo $config["instance_tagline"]; ?></h3>
@@ -115,36 +135,42 @@ file_put_contents($config["database_location"], serialize($item_database)); // W
         <hr>
         <div class="new-item">
             <form method="POST">
-                <label for="location">Location: </label><input type="text" name="location" id="location" placeholder="Location" value="<?php echo $location; ?>" required>
-                <label for="space">Space: </label><input type="text" name="space" id="space" placeholder="Space" value="<?php echo $space; ?>" required>
-                <label for="container">Container: </label><input type="text" name="container" id="container" placeholder="Container" value="<?php echo $container; ?>" required>
+                <label for="location">Location: </label><input type="text" name="location" id="location" placeholder="Location" value="<?php echo $displayed_location; ?>" required>
+                <label for="space">Space: </label><input type="text" name="space" id="space" placeholder="Space" value="<?php echo $displayed_space; ?>" required>
+                <label for="container">Container: </label><input type="text" name="container" id="container" placeholder="Container" value="<?php echo $displayed_container; ?>" required>
                 <hr>
-                <label for="name">Name: </label><input type="text" name="name" id="Name" placeholder="Name" required>
-                <label for="description">Description: </label><input type="text" name="description" id="Description" placeholder="Description">
-                <label for="quantity">Quantity: </label><input type="number" name="quantity" id="Quantity" placeholder="Quantity" value="1" required>
-                <label for="value">Value: </label><input type="number" name="value" id="Value" placeholder="Value" value="0" step="0.01" required>
+                <label for="name">Name: </label><input type="text" name="name" id="Name" placeholder="Name" value="<?php echo $displayed_name; ?>" required>
+                <label for="description">Description: </label><input type="text" name="description" id="Description" placeholder="Description" value="<?php echo $displayed_description; ?>">
+                <label for="quantity">Quantity: </label><input type="number" name="quantity" id="Quantity" placeholder="Quantity" value="<?php if ($displayed_quantity !== "" and $displayed_quantity !== null) { echo $displayed_quantity; } else { echo "1"; } ?>" required>
+                <label for="value">Value: </label><input type="number" name="value" id="Value" placeholder="Value" step="0.01" value="<?php if ($displayed_value !== "" and $displayed_value !== null) { echo $displayed_value; } else { echo "0"; } ?>" required>
                 <br><br>
                 <input type="submit" value="Add Item">
             </form>
         </div>
+
+        <br><a class="button" href=".">Clear</a><br><br>
+
+        <hr>
         <div class="posts-view">
             <?php
                 if (sizeof($item_database) > 0) { // Only display the information in the item database there is actually information to show.
                     foreach ($item_database["locations"] as $location_name => $location_information) {
                         echo "<div class='location'>";
-                        echo "<h1 id='" . $location_name . "'>" . $location_name . "</h1>";
+                        echo "<a class='sectiontitle' href='?location=" . $location_name . "'><h1 id='" . $location_name . "'>" . $location_name . "</h1></a>";
                         foreach ($item_database["locations"][$location_name]["spaces"] as $space_name => $space_information) {
                             echo "<div class='space'>";
-                            echo "<h2 id='"  . $location_name . "-" . $space_name . "'>" . $space_name . "</h2>";
+                            echo "<a class='sectiontitle' href='?location=" . $location_name . "&space=" . $space_name . "'><h2 id='"  . $location_name . "-" . $space_name . "'>" . $space_name . "</h2></a>";
                             foreach ($item_database["locations"][$location_name]["spaces"][$space_name]["containers"] as $container_name => $container_information) {
                                 echo "<div class='container'>";
-                                echo "<h3 id='" . $location_name . "-" . $space_name . "-" . $container_name . "'>" . $container_name . "</h3>";
+                                echo "<a class='sectiontitle' href='?location=" . $location_name . "&space=" . $space_name . "&container=" . $container_name . "'><h3 id='" . $location_name . "-" . $space_name . "-" . $container_name . "'>" . $container_name . "</h3></a>";
                                 foreach ($item_database["locations"][$location_name]["spaces"][$space_name]["containers"][$container_name]["items"] as $item_name => $item_information) {
                                     echo "<div class='item'>";
                                     echo "<h4>" . $item_name . "</h4>";
                                     echo "<p>" . $item_information["description"] . "</p>";
                                     echo "<p>Quantity: " . $item_information["quantity"] . " $" . $item_information["value"] . " ($" . intval($item_information["quantity"]) * floatval($item_information["value"]) . ")</p>";
-                                    echo "<div class='button'><a href='./deleteitem.php?location=" . $location_name . "&space=" . $space_name . "&container=" . $container_name . "&item=" . $item_name . "'>Delete</a></div>";
+                                    echo "<a class='button' href='?location=" . $location_name . "&space=" . $space_name . "&container=" . $container_name . "&name=" . $item_name . "&value=" . $item_information["value"] . "&quantity=" . $item_information["quantity"] . "&description=" . $item_information["description"] . "'>Edit</a>";
+                                    echo "<a class='button' href='./deleteitem.php?location=" . $location_name . "&space=" . $space_name . "&container=" . $container_name . "&item=" . $item_name . "'>Delete</a>";
+                                    echo "<br><br>";
                                     echo "</div>";
                                 }
                                 echo "</div>";
