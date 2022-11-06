@@ -17,7 +17,7 @@ October 12th, 2022
 
 ## Version 2.0
 
-### Efficiency Update
+### Conveinence Update
 
 *Release date to be determined*
 
@@ -27,3 +27,5 @@ October 12th, 2022
     - Buttons now appear more consistent and recognizable.
     - The darker theme contains darker form elements.
     - Forms now use more mobile-friendly layouts and styles.
+- Added container renaming and moving.
+- Added plain text item listing tool.

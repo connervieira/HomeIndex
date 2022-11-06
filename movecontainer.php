@@ -54,6 +54,12 @@ $new_location = filter_var($new_location, FILTER_SANITIZE_STRING); // Sanitize t
 $new_space = filter_var($new_space, FILTER_SANITIZE_STRING); // Sanitize the space string.
 $new_container = filter_var($new_container, FILTER_SANITIZE_STRING); // Sanitize the container string.
 
+if ($new_location == "" or $new_location == null) { // Check to see if the new location name was left blank.
+    $new_location = $old_location; // Use the same location name from the old location.
+}
+if ($new_space == "" or $new_space == null) { // Check to see if the new location name was left blank.
+    $new_space = $old_space; // Use the same location name from the old location.
+}
 if ($new_container == "" or $new_container == null) { // Check to see if the new container name was left blank.
     $new_container = $old_container; // Use the same container name from the old container.
 }
@@ -90,23 +96,25 @@ if ($old_location !== null and $old_location !== "" and $old_space !== null and 
     </head>
 
     <body>
-        <div class="button-container">
-            <a class="button" href="index.php">Back</a>
-        </div>
-        <h1>Move Container</h1>
-        <hr>
-        <div class="new-item">
-            <form method="POST">
-                <label for="location1">Original Location: </label><input type="text" name="location1" id="location1" placeholder="Starting Location" required><br>
-                <label for="space1">Original Space: </label><input type="text" name="space1" id="space1" placeholder="Starting Space" required><br>
-                <label for="container1">Original Container Name: </label><input type="text" name="container1" id="container1" placeholder="Original Container" required><br>
-                <hr>
-                <label for="location2">New Location: </label><input type="text" name="location2" id="location2" placeholder="Ending Location" required><br>
-                <label for="space2">New Space: </label><input type="text" name="space2" id="space2" placeholder="Ending Space" required><br>
-                <label for="container2">New Container Name: </label><input type="text" name="container2" id="container2" placeholder="Ending Container" required><br>
-                <br><br>
-                <input class="button" type="submit" value="Submit">
-            </form>
-        </div>
+        <main>
+            <div class="button-container">
+                <a class="button" href="index.php">Back</a>
+            </div>
+            <h1>Move Container</h1>
+            <hr>
+            <div class="new-item">
+                <form method="POST">
+                    <label for="location1">Original Location: </label><input type="text" name="location1" id="location1" placeholder="Starting Location" required><br>
+                    <label for="space1">Original Space: </label><input type="text" name="space1" id="space1" placeholder="Starting Space" required><br>
+                    <label for="container1">Original Container Name: </label><input type="text" name="container1" id="container1" placeholder="Original Container" required><br>
+                    <hr>
+                    <label for="location2">New Location: </label><input type="text" name="location2" id="location2" placeholder="Ending Location" required><br>
+                    <label for="space2">New Space: </label><input type="text" name="space2" id="space2" placeholder="Ending Space" required><br>
+                    <label for="container2">New Container Name: </label><input type="text" name="container2" id="container2" placeholder="Ending Container" required><br>
+                    <br><br>
+                    <input class="button" type="submit" value="Submit">
+                </form>
+            </div>
+        </main>
     </body>
 </html>
