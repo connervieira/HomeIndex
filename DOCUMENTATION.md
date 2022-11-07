@@ -108,7 +108,10 @@ Home Index has various built in tools. To get to these tools, navigate to the ma
     2. Search Items
         - The Search Items tool allows you to quickly find items in the database based on a search term.
         - The most likely search results are displayed at the top, with their name, location, and "difference score".
-            - The higher the difference score, the less likely the result is to match.
+            - The higher the difference score, the less likely the result is to match. Lower scores indicate a more likely match.
+                - Items will be assigned an intial difference score based on how many characters would have to be added, removed, or changed to match the search term.
+                - Items names with words that match words in the search term will have their difference score decreased.
+                - Items names with sections that match words in the entire search term will have their difference score dramatically decreased.
         - The 'Link' button will directly link to the location of the item on the main page to make editing or deleting quick and easy.
         - The number of displayed results can be customized in the configuration.
 - Data Management
@@ -132,3 +135,7 @@ Home Index has various built in tools. To get to these tools, navigate to the ma
         - This tool takes the contents of the item database and dumps its raw contents into an unformatted string.
         - This tool is useful for accessing the raw item database without having physical access to the server hosting Home Index.
         - The string output by this tool is machine-readable, and doesn't contain any HTML formatting.
+    3. Backup Database
+        - This tool allows you to backup the item database directly on the server.
+        - Simply enter a directory path and a file name to backup the complete item database.
+        - It should be noted that this tool backs up the database on the server itself, not the client device. For security reasons, the database backup can't be automatically restored.
