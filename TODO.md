@@ -15,3 +15,4 @@ This is an informal to do list for Home Index. This list is not an official chan
     - [X] Add item renaming and moving.
 - [X] Add search tool.
 - [X] Add item and container moving/renaming validation.
+- [X] Add database backup tool.

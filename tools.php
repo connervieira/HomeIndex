@@ -40,17 +40,17 @@ if ($config["required_user"] != "") { // Check to see if a required username has
             <h1>Tools</h1>
 
             <h2>General Tools</h2>
-            <a class="button" href='./configuration.php'>Configuration</a>
+            <a class="button" href='./configuration.php'>Configuration</a><br><br><br>
             <a class="button" href='./about.php'>About</a>
 
             <br><br>
             <h2>Data Viewing</h2>
-            <a class="button" href='./listitems.php'>List Items</a>
+            <a class="button" href='./listitems.php'>List Items</a><br><br><br>
             <a class="button" href='./searchitems.php'>Search Items</a>
 
             <br><br>
             <h2>Data Management</h2>
-            <a class="button" href='./movecontainer.php'>Move Container</a>
+            <a class="button" href='./movecontainer.php'>Move Container</a><br><br><br>
             <a class="button" href='./moveitem.php'>Move Item</a>
 
             <?php
@@ -58,8 +58,9 @@ if ($config["required_user"] != "") { // Check to see if a required username has
                 echo '
                 <br><br>
                 <h2>Advanced Tools</h2>
-                <a class="button" href="./dumpdatabase.php">Dump Formatted Database</a>
-                <a class="button" href="./dumpraw.php">Dump Raw Database</a>
+                <a class="button" href="./dumpdatabase.php">Dump Formatted Database</a><br><br><br>
+                <a class="button" href="./dumpraw.php">Dump Raw Database</a><br><br><br>
+                <a class="button" href="./backup.php">Backup Database</a>
                 ';
             }
             ?>

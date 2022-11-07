@@ -34,6 +34,16 @@ Here you can learn how to install and use Home Index.
             - If your Home Index host is publically accessible, you should use this setting to prevent unauthorized access.
         - Users that are not signed in, or don't have a username matching the required username will be denied access.
         - Home Index doesn't have a built in authentication system, but is natively compatible with V0LT DropAuth.
+    - The 'Instance Name' allows you to replace the Home Index name with a name of your own across the service.
+    - The 'Instance Tagline' allows you to replace the Home Index tagline with a tagline of your own across the service.
+    - The 'Credit Level' setting allows you to determine how prominently credit to V0LT will be displayed on your Home Index instance.
+        - 'High' will display a small floating "Made by V0LT" message on the bottom corner of the main page.
+        - 'Low' will display a small "Made by V0LT" message at the beginning of the main page.
+        - 'Off' will turn off any V0LT references.
+    - The 'Display Advanced Tools' determines whether or not the Advanced Tools section will be displayed on the Tools page.
+    - The 'Displayed Search Result' setting determines how many search results will be displayed in the Search tool.
+        - If this number is larger than the database size, then Home Index will only display the maximum available results.
+    - The 'Backup Overwriting' setting determines whether or not the Backup Database tool will overwrite files if the specified file path already exists.
 
 
 ## Usage

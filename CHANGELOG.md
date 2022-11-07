@@ -25,12 +25,12 @@ October 12th, 2022
     - Locations, spaces, containers, and items can now be clicked to automatically fill their values into the item adding form.
 - Improved styling.
     - Buttons now appear more consistent and recognizable.
-        - Buttons on the Tools page now appear side by side for sake of space efficiency.
     - The darker theme contains darker form elements.
     - Forms now use more mobile-friendly layouts and styles with bigger touch points.
 - Added several new tools.
     - Added plain text item listing tool.
     - Added item searching tool.
+    - Added a direct item database backup tool.
     - Added support for object moving and renaming.
         - Added container renaming and moving tool.
         - Added item renaming and moving tool.
