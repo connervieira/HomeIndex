@@ -19,7 +19,7 @@ October 12th, 2022
 
 ### Conveinence Update
 
-*Release date to be determined*
+November 7th, 2022
 
 - Improved editing process.
     - Locations, spaces, containers, and items can now be clicked to automatically fill their values into the item adding form.
