@@ -20,7 +20,7 @@ Home Index is extremely lightweight, and doesn't depend on JavaScript or other h
 
 ### Modern
 
-Despite its lightweight nature, Home Index looks modern and organized. It'll fit right in with the rest of your applications. There's even several built in themes that allow you to customize the color scheme to your preference.
+Despite its lightweight nature, Home Index looks modern and organized. It'll fit right in with the rest of your applications, and works great on both mobile and desktop screens.
 
 ### Self Hosted
 
@@ -28,11 +28,27 @@ Home Index is completely self hosted, and has absolutely no external dependencie
 
 ### Private
 
-Due in part to its offline nature, Home Index is completely private. When it comes to a complete catalog all of your personal possessions, it's critical that no information is shared with third parties.
+Home Index is completely private, and contains absolutely zero trackers of any kind. Your information is only accessible to the people you explicitly grant access to.
 
-### Customizable
+### Configurable
 
-Home Index is very customizable, and can be configured from a web interface. This allows all users, regardless of technical experience, to configure Home Index to their preferences.
+Home Index is extremely configurable, and uses a web front-end to make configuration as easy as possible.
+
+### Searchable
+
+Home Index comes with a search tool to make locating lost items quick and easy. Just enter in a short search phrase, and Home Index will search the entire database in a fraction of a second.
+
+### Reliable
+
+It's common for Home Index users to log hundreds, if not thousands of items. As such, it's critical that this information is protected, so Home Index comes with built in backup tools.
+
+### Themes
+
+Home Index comes with several built in themes to fit your style. The dark theme provides a sleek look, while the light theme is more visible in bright light. The rainbow theme gives a playful impression while the contrast theme makes the interface more accesible.
+
+### Fast
+
+Home Index uses reasonable shortcuts to make adding and manipulating items as fast as possible. Form values that are likely to be reused will presist between submissions, reducing the time required to enter each item.
 
 ### Portable
 
@@ -41,7 +57,3 @@ Home Index uses a portable database format that can be copied and transferred be
 ### Secure
 
 While Home Index isn't designed to be a publically accessible service, it still contains sanitization features to protect its integrity and stability. If malformed or malicious information is submitted through any forms, it should be filtered out before processing.
-
-### Fast
-
-Home Index uses minimal design and reasonable shortcuts to make adding items as fast as possible. Form values that are likely to be reused between items (like location and space), will persist between submissions, reducing the time required to enter each item by over half.
