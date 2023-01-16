@@ -15,17 +15,19 @@ $space = $_POST["space"]; // This is the space the item is in.
 $container = $_POST["container"]; // This is the container the item is in.
 $name = $_POST["name"]; // This is the name of the item.
 $description = $_POST["description"]; // This is the description of the item.
+$identifier = $_POST["identifier"]; // This is the identifier of the item.
 $quantity = $_POST["quantity"]; // This is the quantity of the item.
 $value = $_POST["value"]; // This is the value of the item.
 
 // Collect any information from the URL that may have been submitted.
-$displayed_location = $_GET["location"]; // This is the location the item is in.
-$displayed_space = $_GET["space"]; // This is the space the item is in.
-$displayed_container = $_GET["container"]; // This is the container the item is in.
-$displayed_name = $_GET["name"]; // This is the name of the item.
-$displayed_description = $_GET["description"]; // This is the description of the item.
-$displayed_quantity = $_GET["quantity"]; // This is the quantity of the item.
-$displayed_value = $_GET["value"]; // This is the value of the item.
+$displayed_location = filter_var($_GET["location"], FILTER_SANITIZE_STRING); // This is the location the item is in.
+$displayed_space = filter_var($_GET["space"], FILTER_SANITIZE_STRING); // This is the space the item is in.
+$displayed_container = filter_var($_GET["container"], FILTER_SANITIZE_STRING); // This is the container the item is in.
+$displayed_name = filter_var($_GET["name"], FILTER_SANITIZE_STRING); // This is the name of the item.
+$displayed_description = filter_var($_GET["description"], FILTER_SANITIZE_STRING); // This is the description of the item.
+$displayed_identifier = filter_var($_GET["identifier"], FILTER_SANITIZE_STRING); // This is the identifier of the item.
+$displayed_quantity = filter_var($_GET["quantity"], FILTER_SANITIZE_NUMBER_INT); // This is the quantity of the item.
+$displayed_value = filter_var($_GET["value"], FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION); // This is the value of the item.
 
 
 // Sanitize inputs.
@@ -34,6 +36,7 @@ $space = filter_var($space, FILTER_SANITIZE_STRING); // Sanitize the space strin
 $container = filter_var($container, FILTER_SANITIZE_STRING); // Sanitize the container string.
 $name = filter_var($name, FILTER_SANITIZE_STRING); // Sanitize the name string.
 $description = filter_var($description, FILTER_SANITIZE_STRING); // Sanitize the description string.
+$identifier = filter_var($identifier, FILTER_SANITIZE_STRING); // Sanitize the identifier string.
 $quantity = filter_var($quantity, FILTER_SANITIZE_NUMBER_INT); // Sanitize the quantity integer number.
 $value = filter_var($value, FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION); // Sanitize the value floating point number.
 
@@ -50,7 +53,7 @@ if ($displayed_container == "" or $displayed_container == null) { // If no conta
 
 
 // Convert the item information into an array.
-$item_information = ["description" => $description, "quantity" => intval($quantity), "value" => floatval($value)];
+$item_information = ["description" => $description, "identifier" => $identifier,"quantity" => intval($quantity), "value" => floatval($value)];
 
 
 // Add the item to the item database.
@@ -98,6 +101,7 @@ include "./organizedatabase.php"; // Execute the database organization script.
                 <hr>
                 <label for="name">Name: </label><input type="text" name="name" id="Name" placeholder="Name" value="<?php echo $displayed_name; ?>" required><br>
                 <label for="description">Description: </label><input type="text" name="description" id="Description" placeholder="Description" value="<?php echo $displayed_description; ?>"><br>
+                <label for="identifier">Identifier: </label><input type="text" name="identifier" id="Identifier" placeholder="Identifier" value="<?php echo $displayed_identifier; ?>"><br>
                 <label for="quantity">Quantity: </label><input type="number" name="quantity" id="Quantity" placeholder="Quantity" value="<?php if ($displayed_quantity !== "" and $displayed_quantity !== null) { echo $displayed_quantity; } else { echo "1"; } ?>" required><br>
                 <label for="value">Value: </label><input type="number" name="value" id="Value" placeholder="Value" step="0.01" value="<?php if ($displayed_value !== "" and $displayed_value !== null) { echo $displayed_value; } else { echo "0"; } ?>" required>
                 <br><br>
@@ -123,9 +127,14 @@ include "./organizedatabase.php"; // Execute the database organization script.
                                 foreach ($item_database[$username]["locations"][$location_name]["spaces"][$space_name]["containers"][$container_name]["items"] as $item_name => $item_information) {
                                     echo "<div class='item' id='" . $location_name . " - " . $space_name . " - " . $container_name . " - " . $item_name . "'>";
                                     echo "<h4 id='" . $location_name . " - " . $space_name . " - " . $container_name . " - " . $item_name . "'>" . $item_name . "</h4>";
-                                    echo "<p>" . $item_information["description"] . "</p>";
+                                    if ($item_information["description"] != "") {
+                                        echo "<p>Description: " . $item_information["description"] . "</p>";
+                                    }
+                                    if ($item_information["identifier"] != "") {
+                                        echo "<p>Identifier: " . $item_information["identifier"] . "</p>";
+                                    }
                                     echo "<p>Quantity: " . $item_information["quantity"] . " $" . $item_information["value"] . " ($" . intval($item_information["quantity"]) * floatval($item_information["value"]) . ")</p>";
-                                    echo "<a class='button' href='?location=" . $location_name . "&space=" . $space_name . "&container=" . $container_name . "&name=" . $item_name . "&value=" . $item_information["value"] . "&quantity=" . $item_information["quantity"] . "&description=" . $item_information["description"] . "'>Edit</a>";
+                                    echo "<a class='button' href='?location=" . $location_name . "&space=" . $space_name . "&container=" . $container_name . "&name=" . $item_name . "&value=" . $item_information["value"] . "&quantity=" . $item_information["quantity"] . "&description=" . $item_information["description"] . "&identifier=" . $item_information["identifier"] . "'>Edit</a>";
                                     echo "<a class='button' href='./deleteitem.php?location=" . $location_name . "&space=" . $space_name . "&container=" . $container_name . "&item=" . $item_name . "'>Delete</a>";
                                     echo "<br><br>";
                                     echo "</div>";

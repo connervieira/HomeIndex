@@ -1,9 +1,11 @@
 # Documentation
 
-Here you can learn how to install and use Home Index.
+Here you can learn how to install, configure, and use Home Index.
 
 
 ## Installation
+
+Installing Home Index is the first step in getting a self-hosted instance up and running.
 
 1. Download Home Index from the V0LT website, or another source.
 2. Install Apache, or another web server host.
@@ -24,6 +26,8 @@ In order to fully use Home Index, you'll need an authentication system. Home Ind
 
 
 ## Configuration
+
+As an administrator, you can configure your Home Index instance to your preferences.
 
 1. From the main page of Home Index, press the 'Tools' button at the top of the page.
 2. On the next page, press the 'Configuration' button, under the 'Main Tools' header.
@@ -56,7 +60,20 @@ In order to fully use Home Index, you'll need an authentication system. Home Ind
 
 ## Usage
 
+Using Home Index effectively can turn it into an extremely valuable tool for organization.
+
+
 ### Adding Items
+
+The more items you add to Home Index, the easier it will be to locate possessions in the future. Generally, it's easiest to empty a container like a bin or drawer, and add all of the items to Home Index one by one as you place them back in the container.
+
+Home Index is arguably the most useful when you use it to index items that don't get used up rapidly. For example, adding a particular screwdriver to your item inventory will make it easy to find when you need it, but adding the bananas you picked up from the store is unlikely to be helpful given that they will probably go bad before you misplace them. As such, it would be a waste of time to index the things you purchase and replenish with high regularity.
+
+Remember that adding information like descriptions and values to items might be helpful, but it's completely optional. Don't feel compelled to add extensive metadata to all of the items you index. Doing so might lead to the indexing process feeling extremely tedious. It's better to quickly add a lot of items then to feel burned out from logging too much information, and stopping early.
+
+In short, it goes without saying that Home Index is only useful if you actually use it. As such, it's designed to be as simple or as complex as you want. Don't fall into the trap of being thorough to the point of burn out. Even just quickly adding short names for all the items in a particular area will make it dramatically easier to find misplaced items.
+
+Below is the process for adding items to Home Index.
 
 1. Locate the 'add item' form at the top of the main Home Index page.
 2. Fill out the relevant item location and information details.
@@ -70,9 +87,13 @@ In order to fully use Home Index, you'll need an authentication system. Home Ind
         - This name is unique in it's container.
             - Entering a duplicate name will overwrite the existing item.
         - Ideally this name should be thorough and descriptive to make searching easier.
-        - Examples: 'XYZ College Sweatshirt', 'XYZ Brand Adhesive Bandages', 'Orange Ratchet Screwdriver', '2012 Phonebook'
+        - Examples: 'XYZ College Sweatshirt', 'XYZ Brand Adhesive Bandages', 'Orange Ratchet Screwdriver', '2012 City Phonebook'
     - **Description**: This field is optional, and contains a description of the item.
-        - If you have any special notes about the nature of location of a particular item, you can put those notes here.
+        - If you have any special notes about the nature of an item or it's location, you can put those notes here to make the item easier to locate later.
+        - Examples: "Located in the green envelope", "Bright blue with orange accents", "Tucked in the back corner under other items"
+    - **Indentifier**: This field is optional, and holds an identifier for a paricular item. 
+        - This field is useful for manufactured items like machine parts and electronics.
+        - This can be a barcode number, model number, or similar identifier that makes identifying the exact nature of an item much easier, should you need to replace it or share information about it.
     - **Quantity**: This field contains the quantity of a particular item.
         - If you don't care about measuring the quantity of an item, just put '1'.
     - **Value**: This field contains the approximate value of an individual item.
@@ -82,11 +103,11 @@ In order to fully use Home Index, you'll need an authentication system. Home Ind
 
 ### Modifying Items
 
-Note: It is not possible to change the name of an item by editing it. Instead, use the 'Move Item' tool for this process.
+Note: It is not possible to change the name of an item by editing it. Instead, use the 'Move Item' tool for this process. If you try to edit the name of an item while editing it, a second item will be created using the new name.
 
 1. Locate the item you want to modify.
 2. Click the 'Edit' button to autofill the item's values in the item form at the top of the page.
-3. Enter an updated description, quantity, and value.
+3. Enter any updated information as desired.
 4. Press 'Submit Item' to overwrite the old item's information.
 
 

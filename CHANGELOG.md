@@ -56,3 +56,5 @@ November 7th, 2022
     - All pages now load the same database script.
         - This makes bugs far less likely to go unnoticed.
 - Added a check to prevent the search tool from malfunctioning if the item database is empty.
+- Added sanitization to URL autofill values on the main page.
+- Added 'identifier' field to to items.

@@ -20,9 +20,10 @@ if (file_exists($config["database_location"]) == true) { // Check to see if the 
 
 
 
+$location = filter_var($location, FILTER_SANITIZE_STRING); // Sanitize the location string.
 
 // Collect any information from the form that may have been submitted.
-$old_location = $_POST["location1"]; // This is the location the container is in.
+$old_location = filter_var($_POST["location1"], FILTER_SANITIZE_STRING); // This is the location the container is in.
 $old_space = $_POST["space1"]; // This is the space the container is in.
 $old_container = $_POST["container1"]; // This is the container the item is in.
 $old_item = $_POST["item1"]; // This is the item to be moved.
