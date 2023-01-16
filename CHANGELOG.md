@@ -55,3 +55,4 @@ November 7th, 2022
 - Improved database system.
     - All pages now load the same database script.
         - This makes bugs far less likely to go unnoticed.
+- Added a check to prevent the search tool from malfunctioning if the item database is empty.
