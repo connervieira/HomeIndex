@@ -48,7 +48,8 @@ include "./authentication.php"; // Import the authentication library.
                 if ($config["admin_user"] == "" or $username == $config["admin_user"]) { // Check to see if a admin username has been set.
                     echo "<a class='button' href='./dumpdatabase.php'>Dump Formatted Database</a><br><br><br>";
                     echo "<a class='button' href='./dumpraw.php'>Dump Raw Database</a><br><br><br>";
-                    echo "<a class='button' href='./backup.php'>Backup Database</a>";
+                    echo "<a class='button' href='./backup.php'>Backup Database</a><br><br><br>";
+                    echo "<a class='button' href='./deleteuser.php'>Delete Users</a>";
                 }
             }
             ?>

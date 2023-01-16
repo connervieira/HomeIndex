@@ -18,6 +18,8 @@ $credit_level = $_POST["creditlevel"]; // This is the level of credit given to V
 $display_advanced_tools = $_POST["displayadvancedtools"]; // This determines whether or not the advanced tools section will be displayed on the tools page.
 $displayed_search_results_count = $_POST["displayedsearchresultscount"]; // This is the number of results that will be displayed in the Search tool.
 $backup_overwriting = $_POST["backupoverwriting"]; // This determines whether the database backup tool will allow the user to overwrite existing files.
+$auto_backup = $_POST["autobackup"];
+$auto_backup_interval = $_POST["autobackupinterval"];
 
 
 
@@ -46,6 +48,8 @@ if ($theme != null) { // Check to see if information was input through the form.
     $config["display_advanced_tools"] = $display_advanced_tools;
     $config["displayed_search_results_count"] = $displayed_search_results_count;
     $config["backup_overwriting"] = $backup_overwriting;
+    $config["auto_backup"] = $auto_backup;
+    $config["auto_backup_interval"] = $auto_backup_interval;
 
 
     file_put_contents("./configdatabase.txt", serialize($config)); // Write database changes to disk.
@@ -119,6 +123,10 @@ $formatted_whitelist = substr($formatted_whitelist, 1); // Remove the first char
             <label for="displayedsearchresultscount">Displayed Search Results: </label><input id="displayedsearchresultscount" name="displayedsearchresultscount" type="number" placeholder="Displayed Search Results Count" value="<?php echo $config["displayed_search_results_count"]; ?>">
             <br><br>
             <label for="backupoverwriting">Backup Overwriting: </label><input id="backupoverwriting" name="backupoverwriting" type="checkbox" <?php if ($config["backup_overwriting"] == true) { echo "checked"; } ?>>
+            <br><br>
+            <label for="autobackup">Auto-Backup Path: </label><input id="autobackup" name="autobackup" type="text" value="<?php echo $config["auto_backup"]; ?>" placeholder="/home/user/BackupFile">
+            <br><br>
+            <label for="autobackupinterval">Auto-Backup Interval: </label><input id="autobackupinterval" name="autobackupinterval" type="number" step="0" min="1" value="<?php echo $config["auto_backup_interval"]; ?>" placeholder="60 seconds">
             <br><br>
             <input type="submit" value="Submit">
         </form>

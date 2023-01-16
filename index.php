@@ -2,6 +2,7 @@
 include "./config.php"; // Import the configuration library.
 include "./authentication.php"; // Import the authentication library.
 include "./database.php"; // Import the database library.
+include "./utils.php"; // Import the utils library.
 
 
 
@@ -59,7 +60,7 @@ $item_information = ["description" => $description, "identifier" => $identifier,
 // Add the item to the item database.
 if ($location != null and $space != null and $container != null) { // Check to see if form data has been submitted.
     $item_database[$username]["locations"][$location]["spaces"][$space]["containers"][$container]["items"][$name] = $item_information; // Append the item to the loaded item database.
-    file_put_contents($config["database_location"], serialize($item_database)); // Write database changes to disk.
+    save_database($config["database_location"], $item_database, $config); // Save database changes to the disk.
 }
 
 
@@ -114,7 +115,7 @@ include "./organizedatabase.php"; // Execute the database organization script.
         <hr>
         <div class="posts-view">
             <?php
-                if (sizeof($item_database) > 0) { // Only display the information in the item database there is actually information to show.
+                if (sizeof($item_database[$username]) > 0) { // Only display the information in the item database there is actually information to show.
                     foreach ($item_database[$username]["locations"] as $location_name => $location_information) {
                         echo "<div class='location'>";
                         echo "<a class='sectiontitle' href='?location=" . $location_name . "'><h1 id='" . $location_name . "'>" . $location_name . "</h1></a>";

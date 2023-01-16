@@ -9,7 +9,7 @@ include "./database.php"; // Import the database library.
 $backup_path = $_POST["path"]; // This is the file path that the database will be backed up to.
 $backup_name = $_POST["name"]; // This is the file name that the database will be backed up to.
 
-$overwrite_backup = $config["backup_overwriting"];
+$overwrite_backup = $config["backup_overwriting"]; // This variable determines whether the tool is permitted to overwrite existing files.
 
 
 if ($backup_path !== "" and $backup_path !== null) { // Only run backup processing if the user has entered a backup path.
@@ -61,24 +61,6 @@ if ($backup_path !== "" and $backup_path !== null) { // Only run backup processi
                     <input class="button" type="submit" value="Submit">
                 </form>
             </div>
-            <br><hr><br>
-            <?php
-            if (sizeof($sorted_items) > 0) { // Only display the search results if there are search results to begin with.
-                if (sizeof($sorted_items) < $config["displayed_search_results_count"]) { // Check to see if the number of results to display is bigger than the size of the results themselves.
-                    $config["displayed_search_results_count"]= sizeof($sorted_items); // Default to the maximum size of the sorted items list.
-                }
-                for ($x = 0; $x < $config["displayed_search_results_count"]; $x++) { // Run the loop once for every entry in the item list.
-                    echo "
-                    <div class='location'>
-                        <h3>" . $sorted_items[$x]["name"] . "</h3>
-                        <p>Difference Score: " . $sorted_items[$x]["search_score"] . "</p>
-                        <p>Located in <b>" . $sorted_items[$x]["container"] . "</b> in <b>" . $sorted_items[$x]["space"] . "</b> in <b>" . $sorted_items[$x]["location"] . "</b>.</p>
-                        <a class='button' href='./index.php#" . $sorted_items[$x]["location"] . " - " . $sorted_items[$x]["space"] . " - " . $sorted_items[$x]["container"] . " - " . $sorted_items[$x]["name"] . "'>Link</a><br><br>
-                    </div>
-                    ";
-                }
-            }
-            ?>
         </main>
     </body>
 </html>

@@ -1,6 +1,7 @@
 <?php
 include "./config.php"; // Import the configuration library.
 include "./authentication.php"; // Import the authentication library.
+include "./utils.php"; // Import the utils library.
 
 
 
@@ -54,7 +55,7 @@ if ($old_location !== null and $old_location !== "" and $old_space !== null and 
                 if (isset($item_database[$username]["locations"][$old_location]["spaces"][$old_space]["containers"][$old_container]) == true) { // Check to make sure the specified container actually exists.
                     $item_database[$username]["locations"][$new_location]["spaces"][$new_space]["containers"][$new_container] = $item_database[$username]["locations"][$old_location]["spaces"][$old_space]["containers"][$old_container]; // Move the original container's information to the new container.
                     unset($item_database[$username]["locations"][$old_location]["spaces"][$old_space]["containers"][$old_container]); // Remove the container from the old location.
-                    file_put_contents($config["database_location"], serialize($item_database)); // Write database changes to disk.
+                    save_database($config["database_location"], $item_database, $config); // Save database changes to the disk.
                     echo "<p>Successfully moved container.</p>";
                 } else {
                     echo "<p>The container specified does not exist.</p>";

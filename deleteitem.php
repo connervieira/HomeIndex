@@ -2,6 +2,7 @@
 include "./config.php"; // Import the configuration library.
 include "./authentication.php"; // Import the authentication library.
 include "./database.php"; // Import the database library.
+include "./utils.php"; // Import the utils library.
 
 
 
@@ -28,7 +29,7 @@ if ($confirm == "true") {
         unset($item_database[$username]["locations"][$location]); // Remove the empty location.
     }
 
-    file_put_contents($config["database_location"], serialize($item_database)); // Write database changes to disk.
+    save_database($config["database_location"], $item_database, $config); // Save database changes to the disk.
 }
 
 

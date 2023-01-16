@@ -19,4 +19,12 @@ if (file_exists($config["database_location"]) == true) { // Check to see if the 
     exit(); // Terminate the script.
 }
 
+
+
+
+
+
+
+
+
 ?>

@@ -1,33 +1,11 @@
 <?php
 include "./config.php"; // Import the authentication library.
 include "./authentication.php"; // Import the authentication library.
+include "./database.php"; // Import the database library.
 
 
 
-// Initialize the database.
-if (file_exists($config["database_location"]) == false) { // If the database file doesn't exist, create it.
-    $item_database_file = fopen($config["database_location"], "w") or die("Unable to create database file!"); // Create the file.
-    fwrite($item_database_file, "a:0:{}"); // Set the contents of the database file to a blank database.
-    fclose($item_database_file); // Close the database file.
-}
-
-
-
-// Load the database.
-if (file_exists($config["database_location"]) == true) { // Check to see if the item database file exists. The database should have been created in the previous step if it didn't already exists.
-    $item_database = unserialize(file_get_contents($config["database_location"])); // Load the database from the disk.
-    if (!isset($item_database[$username])) { // Check to see if the user already exists in the item database.
-        $item_database[$username] = array();
-    }
-} else {
-    echo "<p>The database failed to load</p>"; // Inform the user that the database failed to load.
-    exit(); // Terminate the script.
-}
-
-
-
-
-// Remove any empty database elements.
+// Remove any empty database elements from this user.
 foreach ($item_database[$username]["locations"] as $location_name => $location_information) {
     if (sizeof($item_database[$username]["locations"][$location_name]["spaces"]) == 0) { // Check to see if this location is empty.
         unset($item_database[$username]["locations"][$location_name]); // Remove the empty location.
@@ -41,6 +19,14 @@ foreach ($item_database[$username]["locations"] as $location_name => $location_i
                 unset($item_database[$username]["locations"][$location_name]["spaces"][$space_name]["containers"][$container_name]); // Remove the empty container.
             }
         }
+    }
+}
+
+
+// Remove any empty users.
+foreach ($item_database as $user => $user_information) {
+    if (sizeof($item_database[$user]["locations"]) == 0) { // Check to see if this user has no locations, and therefore has no items.
+        unset($item_database[$user]); // Remove the empty user.
     }
 }
 
@@ -62,5 +48,5 @@ if (isset($item_database[$username]["locations"]) == true) { // Only sort the lo
 
 
 
-file_put_contents($config["database_location"], serialize($item_database)); // Write database changes to disk.
+save_database($config["database_location"], $item_database, $config); // Save database changes to the disk.
 ?>

@@ -2,30 +2,9 @@
 include "./config.php"; // Import the configuration library.
 include "./authentication.php"; // Import the authentication library.
 include "./database.php"; // Import the database library.
+include "./utils.php"; // Import the utils library.
 
-
-
-
-$database_location_count = 0;
-$database_space_count = 0;
-$database_container_count = 0;
-$database_item_count = 0;
-$database_value = 0;
-
-// Iterate through all items in the database.
-foreach ($item_database[$username]["locations"] as $location_name => $location_information) { // Iterate through all the locations in the database.
-    $database_location_count = $database_location_count + 1; // Increment the location counter by 1.
-    foreach ($item_database[$username]["locations"][$location_name]["spaces"] as $space_name => $space_information) { // Iterate through all the spaces in the database.
-        $database_space_count = $database_space_count + 1; // Increment the space counter by 1.
-        foreach ($item_database[$username]["locations"][$location_name]["spaces"][$space_name]["containers"] as $container_name => $container_information) { // Iterate through all the containers in the database.
-            $database_container_count = $database_container_count + 1; // Increment the container counter by 1.
-            foreach ($item_database[$username]["locations"][$location_name]["spaces"][$space_name]["containers"][$container_name]["items"] as $item_name => $item_information) { // Iterate through all the items in the database.
-                $database_item_count = $database_item_count + 1; // Increment the item counter by 1.
-                $database_value = $database_value + ($item_information["quantity"] * $item_information["value"]);
-            }
-        }
-    }
-}
+$user_database_statistics = count_user_items($username, $item_database); // Calculate the statistics for the current user's item inventory.
 ?>
 
 
@@ -65,11 +44,11 @@ foreach ($item_database[$username]["locations"] as $location_name => $location_i
 
             <br>
             <h2>Database Information</h2>
-            <p>Database Location Count: <?php echo $database_location_count; ?></p>
-            <p>Database Space Count: <?php echo $database_space_count; ?></p>
-            <p>Database Container Count: <?php echo $database_container_count; ?></p>
-            <p>Database Item Count: <?php echo $database_item_count; ?></p>
-            <p>Database Item Value: $<?php echo $database_value; ?></p>
+            <p>Database Location Count: <?php echo $user_database_statistics[0]; ?></p>
+            <p>Database Space Count: <?php echo $user_database_statistics[1]; ?></p>
+            <p>Database Container Count: <?php echo $user_database_statistics[2]; ?></p>
+            <p>Database Item Count: <?php echo $user_database_statistics[3]; ?></p>
+            <p>Database Item Value: $<?php echo $user_database_statistics[4]; ?></p>
 
             <?php
             if ($config["admin_user"] == "" or $username == $config["admin_user"]) { // Check to see if a admin username has been set.

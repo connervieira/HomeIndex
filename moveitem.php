@@ -1,6 +1,7 @@
 <?php
 include "./config.php"; // Import the configuration library.
 include "./authentication.php"; // Import the authentication library.
+include "./utils.php"; // Import the utils library.
 
 
 
@@ -23,7 +24,7 @@ if (file_exists($config["database_location"]) == true) { // Check to see if the 
 $location = filter_var($location, FILTER_SANITIZE_STRING); // Sanitize the location string.
 
 // Collect any information from the form that may have been submitted.
-$old_location = filter_var($_POST["location1"], FILTER_SANITIZE_STRING); // This is the location the container is in.
+$old_location = $_POST["location1"]; // This is the location the container is in.
 $old_space = $_POST["space1"]; // This is the space the container is in.
 $old_container = $_POST["container1"]; // This is the container the item is in.
 $old_item = $_POST["item1"]; // This is the item to be moved.
@@ -61,7 +62,7 @@ if ($old_location !== null and $old_location !== "" and $old_space !== null and 
                     if (isset($item_database[$username]["locations"][$old_location]["spaces"][$old_space]["containers"][$old_container]["items"][$old_item]) == true) { // Check to make sure the specified item actually exists.
                         $item_database[$username]["locations"][$new_location]["spaces"][$new_space]["containers"][$new_container]["items"][$new_item] = $item_database[$username]["locations"][$old_location]["spaces"][$old_space]["containers"][$old_container]["items"][$old_item]; // Move the original item's information to the new item.
                         unset($item_database[$username]["locations"][$old_location]["spaces"][$old_space]["containers"][$old_container]["items"][$old_item]); // Remove the item from the old location.
-                        file_put_contents($config["database_location"], serialize($item_database)); // Write database changes to disk.
+                        save_database($config["database_location"], $item_database, $config); // Save database changes to the disk.
                         echo "<p>Successfully moved item.</p>";
                     } else {
                         echo "<p>The item specified does not exist.</p>";

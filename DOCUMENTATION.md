@@ -56,6 +56,10 @@ As an administrator, you can configure your Home Index instance to your preferen
     - The 'Displayed Search Result' setting determines how many search results will be displayed in the Search tool.
         - If this number is larger than the database size, then Home Index will only display the maximum available results.
     - The 'Backup Overwriting' setting determines whether or not the Backup Database tool will overwrite files if the specified file path already exists.
+    - The 'Auto-Backup Path' setting defines a path where Home Index will automatically back-up the item database each time the database is modified.
+        - If this field is left blank, then automatic backups will be disabled.
+    - The 'Auto-Backup Interval' specifies the minimum length of time, in seconds, that Home Index won't create another backup after an initial is created.
+        - This prevents large quantities of redundant backups from being created over a short period of time during heavy usage.
 
 
 ## Usage

@@ -11,7 +11,7 @@
 // 3. Enable this tool by changing the 'active' variable below.
 // 4. Load this script in a the browser that you've signed in with.
 // 5. Allow the migration process to complete.
-$active = false;
+$active = true;
 
 
 

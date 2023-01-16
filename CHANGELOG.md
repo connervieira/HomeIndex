@@ -48,6 +48,10 @@ November 7th, 2022
 *Release date to be determined*
 
 - Multiple users can now share a single instance.
+    - Users have their own item inventory database, and can individually export their information.
+    - Only the administrator user can access the entire database.
+        - The administrator can also manually remove users from the item database.
+    - The `migrate.php` tool allows the old database system to be migrated to the new, user based system.
 - Improved authentication system.
     - All pages now load the same authentication script.
         - This makes bugs far less likely to go unnoticed.
@@ -58,3 +62,5 @@ November 7th, 2022
 - Added a check to prevent the search tool from malfunctioning if the item database is empty.
 - Added sanitization to URL autofill values on the main page.
 - Added 'identifier' field to to items.
+- Removed unnecessary code from the database backup tool.
+- Added automatic backup functionality.
