@@ -1,28 +1,17 @@
 <?php
 include "./config.php"; // Import the configuration library.
-
-
-// Check to see if the user is signed in.
-session_start();
-if (isset($_SESSION['loggedin'])) {
-	$username = $_SESSION['username'];
-} else {
-    $username = "";
-}
-
-if ($config["required_user"] != "") { // Check to see if a required username has been set.
-    if ($username != $config["required_user"]) { // Check to see if the current user's username matches the required username.
-        echo "Permissions denied"; // If not, deny the user access to this page.
-        exit(); // Quit loading the rest of the page.
-    }
-}
+$admin_only = true;
+include "./authentication.php"; // Import the authentication library.
 
 
 
 // Collect any information from the form that may have been submitted.
 $theme = $_POST["theme"]; // This is the interface theme.
+$admin_user = $_POST["adminuser"]; // This is the username of the instance administrator.
+$access = $_POST["access"]; // This determines who can access this Home Index instance.
+$whitelist = $_POST["whitelist"]; // This is a list that determine which users can access Home Index when the "whitelist" access setting is selected.
 $database_location = $_POST["databaselocation"]; // This is the file path to the item database.
-$required_user = $_POST["requireduser"]; // This is the optional required username to access this instance.
+$login_page = $_POST["loginpage"]; // This is the page that the user will be redirected to when they attempt to login.
 $instance_name = $_POST["instancename"]; // This is the display name of this instance.
 $instance_tagline = $_POST["instancetagline"]; // This is the displayed tagline of this instance.
 $credit_level = $_POST["creditlevel"]; // This is the level of credit given to V0LT on the main page.
@@ -31,22 +20,45 @@ $displayed_search_results_count = $_POST["displayedsearchresultscount"]; // This
 $backup_overwriting = $_POST["backupoverwriting"]; // This determines whether the database backup tool will allow the user to overwrite existing files.
 
 
+
 if ($display_advanced_tools == "on") { $display_advanced_tools = true; } else { $display_advanced_tools = false; } // Convert the 'display advanced tools' setting to a bool.
 if ($backup_overwriting == "on") { $backup_overwriting = true; } else { $backup_overwriting = false; } // Convert the 'backup overwriting' setting to a bool.
 
+$whitelist = explode(",", $whitelist);
+foreach ($whitelist as $key => $user) { // Iterate through all users in the list of whitelisted users.
+    $whitelist[$key] = trim($user); // Trim any leading or trailing blank spaces for each user.
+    if ($whitelist[$key] == "") { // Check to see if this entry is empty.
+        unset($whitelist[$key]); // Remove this entry.
+    }
+}
 
 if ($theme != null) { // Check to see if information was input through the form.
+
     $config["theme"] = $theme;
+    $config["admin_user"] = $admin_user;
+    $config["access"] = $access;
+    $config["whitelist"] = $whitelist;
     $config["database_location"] = $database_location;
-    $config["required_user"] = $required_user;
+    $config["login_page"] = $login_page;
     $config["instance_name"] = $instance_name;
     $config["instance_tagline"] = $instance_tagline;
     $config["credit_level"] = $credit_level;
     $config["display_advanced_tools"] = $display_advanced_tools;
     $config["displayed_search_results_count"] = $displayed_search_results_count;
     $config["backup_overwriting"] = $backup_overwriting;
+
+
     file_put_contents("./configdatabase.txt", serialize($config)); // Write database changes to disk.
 }
+
+
+
+$formatted_whitelist = "";
+foreach ($config["whitelist"] as $user) { // Iterate through all users in the list of permitted extensions.
+    $formatted_whitelist = $formatted_whitelist . "," . $user; // Add this extension to the list with a comma separator.
+}
+$formatted_whitelist = substr($formatted_whitelist, 1); // Remove the first character, since it will always be a comma.
+
 
 
 ?>
@@ -76,9 +88,20 @@ if ($theme != null) { // Check to see if information was input through the form.
                 <option value='metallic' <?php if ($config["theme"] == "metallic") { echo "selected"; } ?>>Metallic</option>
             </select>
             <br><br>
+            <label for="adminuser">Administrator: </label><input id="adminuser" name="adminuser" type="text" value="<?php echo $config["admin_user"]; ?>" placeholder="Admin User">
+            <br><br>
+            <label for='access'>Access:</label>
+            <select id='access' name='access'>
+                <option value='everyone' <?php if ($config["access"] == "everyone") { echo "selected"; } ?>>Everyone</option>
+                <option value='whitelist' <?php if ($config["access"] == "whitelist") { echo "selected"; } ?>>Whitelist</option>
+                <option value='admin' <?php if ($config["access"] == "admin") { echo "selected"; } ?>>Admin</option>
+            </select>
+            <br><br>
+            <label for="whitelist">Whitelist: </label><input id="whitelist" name="whitelist" type="text" value="<?php echo $formatted_whitelist; ?>" placeholder="user1,user2,user3">
+            <br><br>
             <label for="databaselocation">Database Location: </label><input id="databaselocation" name="databaselocation" type="text" value="<?php echo $config["database_location"]; ?>" placeholder="Database Location">
             <br><br>
-            <label for="requireduser">Required Username: </label><input id="requireduser" name="requireduser" type="text" value="<?php echo $config["required_user"]; ?>" placeholder="Required User">
+            <label for="loginpage">Login Page: </label><input id="loginpage" name="loginpage" type="text" value="<?php echo $config["login_page"]; ?>" placeholder="/login.php">
             <br><br>
             <label for="instancename">Instance Name: </label><input id="instancename" name="instancename" type="text" value="<?php echo $config["instance_name"]; ?>" placeholder="Instance Name">
             <br><br>

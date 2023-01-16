@@ -39,3 +39,19 @@ November 7th, 2022
     - The total number of locations, spaces, and containers are now displayed along side the total item count.
     - The total value of all items in the database is now calculated and displayed.
 - Added a configuration value to enable or disable the Advanced Tools section on the Tools page.
+
+
+## Version 3.0
+
+### Hosting Update
+
+*Release date to be determined*
+
+- Multiple users can now share a single instance.
+- Improved authentication system.
+    - All pages now load the same authentication script.
+        - This makes bugs far less likely to go unnoticed.
+    - Users can now be granted access without being given full administration abilities.
+- Improved database system.
+    - All pages now load the same database script.
+        - This makes bugs far less likely to go unnoticed.

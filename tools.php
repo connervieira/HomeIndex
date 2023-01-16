@@ -1,22 +1,6 @@
 <?php
 include "./config.php"; // Import the configuration library.
-
-
-
-// Check to see if the user is signed in.
-session_start();
-if (isset($_SESSION['loggedin'])) {
-	$username = $_SESSION['username'];
-} else {
-    $username = "";
-}
-
-if ($config["required_user"] != "") { // Check to see if a required username has been set.
-    if ($username != $config["required_user"]) { // Check to see if the current user's username matches the required username.
-        echo "Permissions denied"; // If not, deny the user access to this page.
-        exit(); // Quit loading the rest of the page.
-    }
-}
+include "./authentication.php"; // Import the authentication library.
 
 ?>
 
@@ -40,7 +24,11 @@ if ($config["required_user"] != "") { // Check to see if a required username has
             <h1>Tools</h1>
 
             <h2>General Tools</h2>
-            <a class="button" href='./configuration.php'>Configuration</a><br><br><br>
+            <?php
+            if ($config["admin_user"] == "" or $username == $config["admin_user"]) { // Check to see if a admin username has been set.
+                echo "<a class='button' href='./configuration.php'>Configuration</a><br><br><br>";
+            }
+            ?>
             <a class="button" href='./about.php'>About</a>
 
             <br><br>
@@ -55,13 +43,13 @@ if ($config["required_user"] != "") { // Check to see if a required username has
 
             <?php
             if ($config["display_advanced_tools"] == true) { // Only display the Advanced Tools section if the configuration specifies to do so.
-                echo '
-                <br><br>
-                <h2>Advanced Tools</h2>
-                <a class="button" href="./dumpdatabase.php">Dump Formatted Database</a><br><br><br>
-                <a class="button" href="./dumpraw.php">Dump Raw Database</a><br><br><br>
-                <a class="button" href="./backup.php">Backup Database</a>
-                ';
+                echo "<br><br><h2>Advanced Tools</h2>";
+                echo "<a class='button' href='./dumpuserraw.php'>Dump Raw User Database</a><br><br><br>";
+                if ($config["admin_user"] == "" or $username == $config["admin_user"]) { // Check to see if a admin username has been set.
+                    echo "<a class='button' href='./dumpdatabase.php'>Dump Formatted Database</a><br><br><br>";
+                    echo "<a class='button' href='./dumpraw.php'>Dump Raw Database</a><br><br><br>";
+                    echo "<a class='button' href='./backup.php'>Backup Database</a>";
+                }
             }
             ?>
         </main>

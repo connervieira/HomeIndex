@@ -16,3 +16,5 @@ This is an informal to do list for Home Index. This list is not an official chan
 - [X] Add search tool.
 - [X] Add item and container moving/renaming validation.
 - [X] Add database backup tool.
+- [X] Add multi-user support.
+- [ ] Add a way for administrators to delete users from the item database.

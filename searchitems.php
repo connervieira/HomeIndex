@@ -1,22 +1,6 @@
 <?php
 include "./config.php"; // Import the configuration library.
-
-
-
-// Check to see if the user is signed in.
-session_start();
-if (isset($_SESSION['loggedin'])) {
-	$username = $_SESSION['username'];
-} else {
-    $username = "";
-}
-
-if ($config["required_user"] != "") { // Check to see if a required username has been set.
-    if ($username != $config["required_user"]) { // Check to see if the current user's username matches the required username.
-        echo "Permissions denied"; // If not, deny the user access to this page.
-        exit(); // Quit loading the rest of the page.
-    }
-}
+include "./authentication.php"; // Import the authentication library.
 
 
 
@@ -52,10 +36,10 @@ if ($search_string !== "" and $search_string !== null) { // Only run search proc
 
     // Create a list of every item in the database to make the searching process easier.
     $item_list = array(); // The the list of items to a blank placeholder.
-    foreach ($item_database["locations"] as $location_name => $location_information) { // Iterate through all the locations in the database.
-        foreach ($item_database["locations"][$location_name]["spaces"] as $space_name => $space_information) { // Iterate through all the spaces in this location.
-            foreach ($item_database["locations"][$location_name]["spaces"][$space_name]["containers"] as $container_name => $container_information) { // Iterate through all the containers in this space.
-                foreach ($item_database["locations"][$location_name]["spaces"][$space_name]["containers"][$container_name]["items"] as $item_name => $item_information) { // Iterate through all the items in this container.
+    foreach ($item_database[$username]["locations"] as $location_name => $location_information) { // Iterate through all the locations in the database.
+        foreach ($item_database[$username]["locations"][$location_name]["spaces"] as $space_name => $space_information) { // Iterate through all the spaces in this location.
+            foreach ($item_database[$username]["locations"][$location_name]["spaces"][$space_name]["containers"] as $container_name => $container_information) { // Iterate through all the containers in this space.
+                foreach ($item_database[$username]["locations"][$location_name]["spaces"][$space_name]["containers"][$container_name]["items"] as $item_name => $item_information) { // Iterate through all the items in this container.
                     $individual_item_information["name"] = $item_name;
                     $individual_item_information["location"] = $location_name;
                     $individual_item_information["space"] = $space_name;
@@ -125,9 +109,9 @@ if ($search_string !== "" and $search_string !== null) { // Only run search proc
             </div>
             <br><hr><br>
             <?php
-            if (sizeof($sorted_items) > 0) { // Only display the search results if there are search results to begin with.
+            if (sizeof($sorted_items) > 0 and sizeof($item_database[$username]["locations"]) > 0) { // Only display the search results if there are search results to begin with.
                 if (sizeof($sorted_items) < $config["displayed_search_results_count"]) { // Check to see if the number of results to display is bigger than the size of the results themselves.
-                    $config["displayed_search_results_count"]= sizeof($sorted_items); // Default to the maximum size of the sorted items list.
+                    $config["displayed_search_results_count"] = sizeof($sorted_items); // Default to the maximum size of the sorted items list.
                 }
                 for ($x = 0; $x < $config["displayed_search_results_count"]; $x++) { // Run the loop once for every entry in the item list.
                     echo "

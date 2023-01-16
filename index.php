@@ -1,40 +1,8 @@
 <?php
 include "./config.php"; // Import the configuration library.
+include "./authentication.php"; // Import the authentication library.
+include "./database.php"; // Import the database library.
 
-
-
-// Check to see if the user is signed in.
-session_start();
-if (isset($_SESSION['loggedin'])) {
-	$username = $_SESSION['username'];
-} else {
-    $username = "";
-}
-
-if ($config["required_user"] != "") { // Check to see if a required username has been set.
-    if ($username != $config["required_user"]) { // Check to see if the current user's username matches the required username.
-        echo "Permissions denied"; // If not, deny the user access to this page.
-        exit(); // Quit loading the rest of the page.
-    }
-}
-
-
-
-
-
-// Load and initialize the database.
-if (file_exists($config["database_location"]) == false) { // If the database file doesn't exist, create it.
-    $item_database_file = fopen($config["database_location"], "w") or die("Unable to create database file!"); // Create the file.
-    fwrite($item_database_file, "a:0:{}"); // Set the contents of the database file to a blank database.
-    fclose($item_database_file); // Close the database file.
-}
-
-if (file_exists($config["database_location"]) == true) { // Check to see if the item database file exists. The database should have been created in the previous step if it didn't already exists.
-    $item_database = unserialize(file_get_contents($config["database_location"])); // Load the database from the disk.
-} else {
-    echo "<p>The database failed to load</p>"; // Inform the user that the database failed to load.
-    exit(); // Terminate the script.
-}
 
 
 
@@ -87,7 +55,7 @@ $item_information = ["description" => $description, "quantity" => intval($quanti
 
 // Add the item to the item database.
 if ($location != null and $space != null and $container != null) { // Check to see if form data has been submitted.
-    $item_database["locations"][$location]["spaces"][$space]["containers"][$container]["items"][$name] = $item_information; // Append the item to the loaded item database.
+    $item_database[$username]["locations"][$location]["spaces"][$space]["containers"][$container]["items"][$name] = $item_information; // Append the item to the loaded item database.
     file_put_contents($config["database_location"], serialize($item_database)); // Write database changes to disk.
 }
 
@@ -143,16 +111,16 @@ include "./organizedatabase.php"; // Execute the database organization script.
         <div class="posts-view">
             <?php
                 if (sizeof($item_database) > 0) { // Only display the information in the item database there is actually information to show.
-                    foreach ($item_database["locations"] as $location_name => $location_information) {
+                    foreach ($item_database[$username]["locations"] as $location_name => $location_information) {
                         echo "<div class='location'>";
                         echo "<a class='sectiontitle' href='?location=" . $location_name . "'><h1 id='" . $location_name . "'>" . $location_name . "</h1></a>";
-                        foreach ($item_database["locations"][$location_name]["spaces"] as $space_name => $space_information) {
+                        foreach ($item_database[$username]["locations"][$location_name]["spaces"] as $space_name => $space_information) {
                             echo "<div class='space'>";
                             echo "<a class='sectiontitle' href='?location=" . $location_name . "&space=" . $space_name . "'><h2 id='"  . $location_name . "-" . $space_name . "'>" . $space_name . "</h2></a>";
-                            foreach ($item_database["locations"][$location_name]["spaces"][$space_name]["containers"] as $container_name => $container_information) {
+                            foreach ($item_database[$username]["locations"][$location_name]["spaces"][$space_name]["containers"] as $container_name => $container_information) {
                                 echo "<div class='container'>";
                                 echo "<a class='sectiontitle' href='?location=" . $location_name . "&space=" . $space_name . "&container=" . $container_name . "'><h3 id='" . $location_name . "-" . $space_name . "-" . $container_name . "'>" . $container_name . "</h3></a>";
-                                foreach ($item_database["locations"][$location_name]["spaces"][$space_name]["containers"][$container_name]["items"] as $item_name => $item_information) {
+                                foreach ($item_database[$username]["locations"][$location_name]["spaces"][$space_name]["containers"][$container_name]["items"] as $item_name => $item_information) {
                                     echo "<div class='item' id='" . $location_name . " - " . $space_name . " - " . $container_name . " - " . $item_name . "'>";
                                     echo "<h4 id='" . $location_name . " - " . $space_name . " - " . $container_name . " - " . $item_name . "'>" . $item_name . "</h4>";
                                     echo "<p>" . $item_information["description"] . "</p>";

@@ -1,21 +1,6 @@
 <?php
 include "./config.php"; // Import the configuration library.
-
-
-// Check to see if the user is signed in.
-session_start();
-if (isset($_SESSION['loggedin'])) {
-	$username = $_SESSION['username'];
-} else {
-    $username = "";
-}
-
-if ($config["required_user"] != "") { // Check to see if a required username has been set.
-    if ($username != $config["required_user"]) { // Check to see if the current user's username matches the required username.
-        echo "Permissions denied"; // If not, deny the user access to this page.
-        exit(); // Quit loading the rest of the page.
-    }
-}
+include "./authentication.php"; // Import the authentication library.
 
 
 
@@ -47,16 +32,16 @@ if (file_exists($config["database_location"]) == true) { // Check to see if the 
             <ul>
                 <?php
                 if (sizeof($item_database) > 0) { // Only display the information in the item database there is actually information to show.
-                    foreach ($item_database["locations"] as $location_name => $location_information) {
+                    foreach ($item_database[$username]["locations"] as $location_name => $location_information) {
                         echo "<li>" . $location_name . "</li>";
                         echo "<ul>";
-                        foreach ($item_database["locations"][$location_name]["spaces"] as $space_name => $space_information) {
+                        foreach ($item_database[$username]["locations"][$location_name]["spaces"] as $space_name => $space_information) {
                             echo "<li>" . $space_name . "</li>";
                             echo "<ul>";
-                            foreach ($item_database["locations"][$location_name]["spaces"][$space_name]["containers"] as $container_name => $container_information) {
+                            foreach ($item_database[$username]["locations"][$location_name]["spaces"][$space_name]["containers"] as $container_name => $container_information) {
                                 echo "<li>" . $container_name . "</li>";
                                 echo "<ul>";
-                                foreach ($item_database["locations"][$location_name]["spaces"][$space_name]["containers"][$container_name]["items"] as $item_name => $item_information) {
+                                foreach ($item_database[$username]["locations"][$location_name]["spaces"][$space_name]["containers"][$container_name]["items"] as $item_name => $item_information) {
                                     echo "<li>" . $item_name . "</li>";
                                 }
                                 echo "</ul>";

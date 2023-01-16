@@ -1,22 +1,6 @@
 <?php
 include "./config.php"; // Import the configuration library.
-
-
-
-// Check to see if the user is signed in.
-session_start();
-if (isset($_SESSION['loggedin'])) {
-	$username = $_SESSION['username'];
-} else {
-    $username = "";
-}
-
-if ($config["required_user"] != "") { // Check to see if a required username has been set.
-    if ($username != $config["required_user"]) { // Check to see if the current user's username matches the required username.
-        echo "Permissions denied"; // If not, deny the user access to this page.
-        exit(); // Quit loading the rest of the page.
-    }
-}
+include "./authentication.php"; // Import the authentication library.
 
 
 
@@ -67,9 +51,9 @@ if ($old_location !== null and $old_location !== "" and $old_space !== null and 
     if ($old_location !== $new_location or $old_space !== $new_space or $old_container !== $new_container) {
         if ($new_location !== null and $new_location !== "") { // Check to make sure a new location was specified.
             if ($new_space !== null and $new_space !== "") { // Check to make sure a new space was specified.
-                if (isset($item_database["locations"][$old_location]["spaces"][$old_space]["containers"][$old_container]) == true) { // Check to make sure the specified container actually exists.
-                    $item_database["locations"][$new_location]["spaces"][$new_space]["containers"][$new_container] = $item_database["locations"][$old_location]["spaces"][$old_space]["containers"][$old_container]; // Move the original container's information to the new container.
-                    unset($item_database["locations"][$old_location]["spaces"][$old_space]["containers"][$old_container]); // Remove the container from the old location.
+                if (isset($item_database[$username]["locations"][$old_location]["spaces"][$old_space]["containers"][$old_container]) == true) { // Check to make sure the specified container actually exists.
+                    $item_database[$username]["locations"][$new_location]["spaces"][$new_space]["containers"][$new_container] = $item_database[$username]["locations"][$old_location]["spaces"][$old_space]["containers"][$old_container]; // Move the original container's information to the new container.
+                    unset($item_database[$username]["locations"][$old_location]["spaces"][$old_space]["containers"][$old_container]); // Remove the container from the old location.
                     file_put_contents($config["database_location"], serialize($item_database)); // Write database changes to disk.
                     echo "<p>Successfully moved container.</p>";
                 } else {

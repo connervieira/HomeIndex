@@ -10,8 +10,11 @@ if (file_exists("./configdatabase.txt") == false) { // If the database file does
 
     // Set the default configuration values.
     $config["theme"] = "light";
+    $config["access"] = "admin";
+    $config["whitelist"] = array();
     $config["database_location"] = "./itemdatabase.txt";
-    $config["required_user"] = "";
+    $config["admin_user"] = "";
+    $config["login_page"] = "../login.php";
     $config["instance_name"] = "Home Index";
     $config["instance_tagline"] = "Organize your personal possessions";
     $config["credit_level"] = "low";

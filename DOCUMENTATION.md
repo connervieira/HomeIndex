@@ -24,16 +24,19 @@ Here you can learn how to install and use Home Index.
 2. On the next page, press the 'Configuration' button, under the 'Main Tools' header.
 3. Change configuration values as desired.
     - The 'Theme' setting defines a color scheme to be used across Home Index.
+    - The 'Admininstrator' setting is the username of the adminstrator of the Home Index instance.
+        - The adminstrator user is the only user that can change critical settings and use secure tools.
+        - If this is left blank, then any user with access to the instance will be able to make configuration changes.
+    - The 'Access' option determines who can access the instance.
+        - The 'Everyone' option allows anyone with a username to use Home Index.
+        - The 'Whitelist' option only allows whitelisted usernames to use Home Index.
+        - The 'Admin' option only allows the adminstrator user to use Home Index.
+    - The 'Whitelist' setting determines which users are permitted to use Home Index when the 'Whitelist' access option is selected.
     - The 'Database Location' setting defines where Home Index will store it's item database.
         - To have the database stored in the root Home Index directory, simply prefix the file-name with `./`.
             - Example: `./itemdatabase.txt`
         - To have the database stored in a different folder, specify the full file path and file name.
-    - The 'Required Username' setting defines the username that a user must have to access Home Index.
-        - If this setting is left blank, anyone with access to the Home Index instance is permitted to access and edit Home Index information.
-            - If you're hosting Home Index on your local network for personal access, this can be left blank to allow anyone on your home network to access Home Index.
-            - If your Home Index host is publically accessible, you should use this setting to prevent unauthorized access.
-        - Users that are not signed in, or don't have a username matching the required username will be denied access.
-        - Home Index doesn't have a built in authentication system, but is natively compatible with V0LT DropAuth.
+    - The 'Login Page' option defines where Home Index will redirect clients who are not logged in.
     - The 'Instance Name' allows you to replace the Home Index name with a name of your own across the service.
     - The 'Instance Tagline' allows you to replace the Home Index tagline with a tagline of your own across the service.
     - The 'Credit Level' setting allows you to determine how prominently credit to V0LT will be displayed on your Home Index instance.
