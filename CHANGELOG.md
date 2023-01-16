@@ -19,6 +19,8 @@ October 12th, 2022
 
 ### Conveinence Update
 
+This update adds several features that make Home Index an even more powerful tool to make your life easier. Improved editing, searching, and styling makes it even quicker to index your possessions.
+
 November 7th, 2022
 
 - Improved editing process.
@@ -44,6 +46,8 @@ November 7th, 2022
 ## Version 3.0
 
 ### Hosting Update
+
+This update focuses on Home Index use on servers, and improves security and stability. Notably, this update also adds support for multiple users on a single instance.
 
 *Release date to be determined*
 
