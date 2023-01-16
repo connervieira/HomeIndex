@@ -18,6 +18,11 @@ Here you can learn how to install and use Home Index.
     - Example: `http://localhost/homeindex/`
 
 
+## Authentication
+
+In order to fully use Home Index, you'll need an authentication system. Home Index is compatible with V0LT DropAuth.
+
+
 ## Configuration
 
 1. From the main page of Home Index, press the 'Tools' button at the top of the page.
