@@ -35,10 +35,15 @@ $new_item = $_POST["item2"]; // This is the item to be moved.
 
 
 // Sanitize inputs.
-$new_location = filter_var($new_location, FILTER_SANITIZE_STRING); // Sanitize the location string.
-$new_space = filter_var($new_space, FILTER_SANITIZE_STRING); // Sanitize the space string.
-$new_container = filter_var($new_container, FILTER_SANITIZE_STRING); // Sanitize the container string.
-$new_item = filter_var($new_item, FILTER_SANITIZE_STRING); // Sanitize the item string.
+$old_location = filter_var($old_location, FILTER_SANITIZE_STRING); // Sanitize the old location string.
+$old_space = filter_var($old_space, FILTER_SANITIZE_STRING); // Sanitize the old space string.
+$old_container = filter_var($old_container, FILTER_SANITIZE_STRING); // Sanitize the old container string.
+$old_item = filter_var($old_item, FILTER_SANITIZE_STRING); // Sanitize the old item string.
+$new_location = filter_var($new_location, FILTER_SANITIZE_STRING); // Sanitize the new location string.
+$new_space = filter_var($new_space, FILTER_SANITIZE_STRING); // Sanitize the new space string.
+$new_container = filter_var($new_container, FILTER_SANITIZE_STRING); // Sanitize the new container string.
+$new_item = filter_var($new_item, FILTER_SANITIZE_STRING); // Sanitize the new item string.
+
 
 if ($new_location == "" or $new_location == null) { // Check to see if the new location name was left blank.
     $new_location = $old_location; // Use the same location name from the old location.

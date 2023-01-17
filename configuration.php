@@ -23,8 +23,95 @@ $auto_backup_interval = $_POST["autobackupinterval"];
 
 
 
+// Sanitize configuration inputs.
+if ($theme != "" and $theme != "light" and $theme != "dark" and $theme != "rainbow" and $theme != "contrast" and $theme != "metallic") {
+    echo "<p>Form manipulation detected.</p>";
+    exit();
+}
+
+if (strlen($admin_user) > 1024) {
+    echo "<p>Form manipulation detected.</p>";
+    exit();
+}
+if ($admin_user != filter_var($admin_user, FILTER_SANITIZE_STRING)) {
+    echo "<p>Form manipulation detected.</p>";
+    exit();
+}
+
+if ($access != "" and $access != "everyone" and $access != "whitelist" and $access != "admin") {
+    echo "<p>Form manipulation detected.</p>";
+    exit();
+}
+
+if (strlen($whitelist) > 32768) {
+    echo "<p>Form manipulation detected.</p>";
+    exit();
+}
+if ($whitelist != filter_var($whitelist, FILTER_SANITIZE_STRING)) {
+    echo "<p>Form manipulation detected.</p>";
+    exit();
+}
+
+if (strlen($database_location) > 512) {
+    echo "<p>Form manipulation detected.</p>";
+    exit();
+}
+if ($database_location != filter_var($database_location, FILTER_SANITIZE_STRING)) {
+    echo "<p>Form manipulation detected.</p>";
+    exit();
+}
+
+if (strlen($login_page) > 512) {
+    echo "<p>Form manipulation detected.</p>";
+    exit();
+}
+if ($login_page != filter_var($login_page, FILTER_SANITIZE_STRING)) {
+    echo "<p>Form manipulation detected.</p>";
+    exit();
+}
+
+if (strlen($instance_name) > 64) {
+    echo "<p>Form manipulation detected.</p>";
+    exit();
+}
+if ($instance_name != filter_var($instance_name, FILTER_SANITIZE_STRING)) {
+    echo "<p>Form manipulation detected.</p>";
+    exit();
+}
+
+if (strlen($instance_tagline) > 1024) {
+    echo "<p>Form manipulation detected.</p>";
+    exit();
+}
+if ($instance_tagline != filter_var($instance_tagline, FILTER_SANITIZE_STRING)) {
+    echo "<p>Form manipulation detected.</p>";
+    exit();
+}
+
+if ($credit_level != "" and $credit_level != "high" and $credit_level != "low" and $credit_level != "off") {
+    echo "<p>Form manipulation detected.</p>";
+    exit();
+}
+
 if ($display_advanced_tools == "on") { $display_advanced_tools = true; } else { $display_advanced_tools = false; } // Convert the 'display advanced tools' setting to a bool.
+
+$displayed_search_results_count = intval($displayed_search_results_count);
+
 if ($backup_overwriting == "on") { $backup_overwriting = true; } else { $backup_overwriting = false; } // Convert the 'backup overwriting' setting to a bool.
+
+if (strlen($auto_backup) > 2048) {
+    echo "<p>Form manipulation detected.</p>";
+    exit();
+}
+if ($auto_backup != filter_var($auto_backup, FILTER_SANITIZE_STRING)) {
+    echo "<p>Form manipulation detected.</p>";
+    exit();
+}
+
+$auto_backup_interval = intval($auto_backup_interval);
+
+
+
 
 $whitelist = explode(",", $whitelist);
 foreach ($whitelist as $key => $user) { // Iterate through all users in the list of whitelisted users.
@@ -34,8 +121,16 @@ foreach ($whitelist as $key => $user) { // Iterate through all users in the list
     }
 }
 
-if ($theme != null) { // Check to see if information was input through the form.
 
+
+
+
+
+
+
+
+
+if ($theme != null) { // Check to see if information was input through the form.
     $config["theme"] = $theme;
     $config["admin_user"] = $admin_user;
     $config["access"] = $access;

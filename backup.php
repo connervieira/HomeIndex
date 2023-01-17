@@ -9,6 +9,14 @@ include "./database.php"; // Import the database library.
 $backup_path = $_POST["path"]; // This is the file path that the database will be backed up to.
 $backup_name = $_POST["name"]; // This is the file name that the database will be backed up to.
 
+
+// Sanitize inputs.
+if (strlen($backup_path) > 1024) { echo "<p>The backup directory path string is longer than expected.</p>"; exit(); }
+if (strlen($backup_name) > 256) { echo "<p>The backup file name string is longer than expected.</p>"; exit(); }
+if ($backup_path != filter_var($backup_path, FILTER_SANITIZE_STRING)) { echo "<p>The backup directory path string contains disallowed characters</p>"; exit(); } // Sanitize the backup directory path.
+if ($backup_name != filter_var($backup_name, FILTER_SANITIZE_STRING)) { echo "<p>The backup file name string contains disallowed characters</p>"; exit(); } // Sanitize the backup file name.
+
+
 $overwrite_backup = $config["backup_overwriting"]; // This variable determines whether the tool is permitted to overwrite existing files.
 
 

@@ -30,7 +30,6 @@ $displayed_identifier = filter_var($_GET["identifier"], FILTER_SANITIZE_STRING);
 $displayed_quantity = filter_var($_GET["quantity"], FILTER_SANITIZE_NUMBER_INT); // This is the quantity of the item.
 $displayed_value = filter_var($_GET["value"], FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION); // This is the value of the item.
 
-
 // Sanitize inputs.
 $location = filter_var($location, FILTER_SANITIZE_STRING); // Sanitize the location string.
 $space = filter_var($space, FILTER_SANITIZE_STRING); // Sanitize the space string.
@@ -40,6 +39,17 @@ $description = filter_var($description, FILTER_SANITIZE_STRING); // Sanitize the
 $identifier = filter_var($identifier, FILTER_SANITIZE_STRING); // Sanitize the identifier string.
 $quantity = filter_var($quantity, FILTER_SANITIZE_NUMBER_INT); // Sanitize the quantity integer number.
 $value = filter_var($value, FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION); // Sanitize the value floating point number.
+
+// Verify input lengths.
+if (strlen($location) > 512) { echo "<p>The 'location' field is longer than expected.</p>"; exit(); }
+if (strlen($space) > 512) { echo "<p>The 'space' field is longer than expected.</p>"; exit(); }
+if (strlen($container) > 512) { echo "<p>The 'container' field is longer than expected.</p>"; exit(); }
+if (strlen($name) > 512) { echo "<p>The 'name' field is longer than expected.</p>"; exit(); }
+if (strlen($description) > 4096) { echo "<p>The 'description' field is longer than expected.</p>"; exit(); }
+if (strlen($identifier) > 2048) { echo "<p>The 'identifier' field is longer than expected.</p>"; exit(); }
+if ($quantity > 2**32) { echo "<p>The 'quantity' field input is excessively high.</p>"; exit(); }
+if ($value > 2**32) { echo "<p>The 'quantity' field input is excessively high.</p>"; exit(); }
+
 
 
 if ($displayed_location == "" or $displayed_location == null) { // If no location is set to be displayed, then fall back to the information from the last item.

@@ -66,5 +66,9 @@ This update focuses on Home Index use on servers, and improves security and stab
 - Added a check to prevent the search tool from malfunctioning if the item database is empty.
 - Added sanitization to URL autofill values on the main page.
 - Added 'identifier' field to to items.
-- Removed unnecessary code from the database backup tool.
-- Added automatic backup functionality.
+- Improved database backups.
+    - Removed unnecessary code from the database backup tool.
+    - Added automatic backup functionality.
+- Improve input sanitization.
+    - Inputs now have a maximum length to prevent malicious users from filling the database with junk data.
+    - All inputs are now sanitized, even if they are only accessible to the administrator.

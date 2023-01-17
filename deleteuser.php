@@ -10,6 +10,10 @@ $autofill_user = $_GET["autofilluser"];
 $user_to_delete = $_POST["user_to_delete"];
 
 
+if (strlen($autofill_user) > 1024 or $autofill_user != filter_var($autofill_user, FILTER_SANITIZE_STRING)) { echo "<p>The autofill username from the URL appears to have been manipulated.</p>"; exit(); } // Sanitize the autofill username.
+if (strlen($user_to_delete) > 1024 or $user_to_delete != filter_var($user_to_delete, FILTER_SANITIZE_STRING)) { echo "<p>The username to delete is malformed.</p>"; exit(); } // Sanitize the username to delete.
+
+
 if ($user_to_delete != "" and $user_to_delete != null) {
     if (isset($item_database[$user_to_delete])) {
         unset($item_database[$user_to_delete]); // Remove the user from the item database.
