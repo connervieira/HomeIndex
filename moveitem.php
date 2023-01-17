@@ -21,7 +21,23 @@ if (file_exists($config["database_location"]) == true) { // Check to see if the 
 
 
 
-$location = filter_var($location, FILTER_SANITIZE_STRING); // Sanitize the location string.
+// Collect and autofill information from the URL.
+$autofill_location = $_GET["autolocation"]; // Get the autofill location string from the URL, if it exists.
+$autofill_space = $_GET["autospace"]; // Get the autofill space string from the URL, if it exists.
+$autofill_container = $_GET["autocontainer"]; // Get the autofill container string from the URL, if it exists.
+$autofill_item = $_GET["autoitem"]; // Get the autofill item string from the URL, if it exists.
+
+
+// Sanitize the autofill values.
+if (strlen($autofill_location) > 512) { echo "<p>The autofill location from the URL is excessively long.</p>"; exit(); }
+if ($autofill_location != filter_var($autofill_location, FILTER_SANITIZE_STRING)) { echo "<p>The autofill location string from the URL contains forbidden characters.</p>"; exit(); }
+if (strlen($autofill_space) > 512) { echo "<p>The autofill space from the URL is excessively long.</p>"; exit(); }
+if ($autofill_space != filter_var($autofill_space, FILTER_SANITIZE_STRING)) { echo "<p>The autofill space string from the URL contains forbidden characters.</p>"; exit(); }
+if (strlen($autofill_conainer) > 512) { echo "<p>The autofill container from the URL is excessively long.</p>"; exit(); }
+if ($autofill_container != filter_var($autofill_container, FILTER_SANITIZE_STRING)) { echo "<p>The autofill container string from the URL contains forbidden characters.</p>"; exit(); }
+if (strlen($autofill_item) > 512) { echo "<p>The autofill item from the URL is excessively long.</p>"; exit(); }
+if ($autofill_item != filter_var($autofill_item, FILTER_SANITIZE_STRING)) { echo "<p>The autofill item string from the URL contains forbidden characters.</p>"; exit(); }
+
 
 // Collect any information from the form that may have been submitted.
 $old_location = $_POST["location1"]; // This is the location the container is in.
@@ -112,10 +128,10 @@ include "./organizedatabase.php"; // Execute the script to organize the database
             <hr>
             <div class="new-item">
                 <form method="POST">
-                    <label for="location1">Original Location: </label><input type="text" name="location1" id="location1" placeholder="Starting Location" required><br>
-                    <label for="space1">Original Space: </label><input type="text" name="space1" id="space1" placeholder="Starting Space" required><br>
-                    <label for="container1">Original Container: </label><input type="text" name="container1" id="container1" placeholder="Original Container" required><br>
-                    <label for="item1">Original Item Name: </label><input type="text" name="item1" id="item1" placeholder="Original Item" required><br>
+                    <label for="location1">Original Location: </label><input type="text" name="location1" id="location1" placeholder="Starting Location" value="<?php echo $autofill_location; ?>" required><br>
+                    <label for="space1">Original Space: </label><input type="text" name="space1" id="space1" placeholder="Starting Space" value="<?php echo $autofill_space; ?>" required><br>
+                    <label for="container1">Original Container: </label><input type="text" name="container1" id="container1" placeholder="Original Container" value="<?php echo $autofill_container; ?>" required><br>
+                    <label for="item1">Original Item Name: </label><input type="text" name="item1" id="item1" placeholder="Original Item" value="<?php echo $autofill_item; ?>" required><br>
                     <hr>
                     <label for="location2">New Location: </label><input type="text" name="location2" id="location2" placeholder="Ending Location"><br>
                     <label for="space2">New Space: </label><input type="text" name="space2" id="space2" placeholder="Ending Space"><br>

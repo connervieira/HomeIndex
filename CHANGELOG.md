@@ -72,3 +72,4 @@ This update focuses on Home Index use on servers, and improves security and stab
 - Improve input sanitization.
     - Inputs now have a maximum length to prevent malicious users from filling the database with junk data.
     - All inputs are now sanitized, even if they are only accessible to the administrator.
+- Added shortcut to move items on the main page.

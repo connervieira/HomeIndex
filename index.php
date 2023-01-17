@@ -147,6 +147,7 @@ include "./organizedatabase.php"; // Execute the database organization script.
                                     echo "<p>Quantity: " . $item_information["quantity"] . " $" . $item_information["value"] . " ($" . intval($item_information["quantity"]) * floatval($item_information["value"]) . ")</p>";
                                     echo "<a class='button' href='?location=" . $location_name . "&space=" . $space_name . "&container=" . $container_name . "&name=" . $item_name . "&value=" . $item_information["value"] . "&quantity=" . $item_information["quantity"] . "&description=" . $item_information["description"] . "&identifier=" . $item_information["identifier"] . "'>Edit</a>";
                                     echo "<a class='button' href='./deleteitem.php?location=" . $location_name . "&space=" . $space_name . "&container=" . $container_name . "&item=" . $item_name . "'>Delete</a>";
+                                    echo "<a class='button' href='./moveitem.php?autolocation=" . $location_name . "&autospace=" . $space_name . "&autocontainer=" . $container_name . "&autoitem=" . $item_name . "'>Move</a>";
                                     echo "<br><br>";
                                     echo "</div>";
                                 }
