@@ -18,3 +18,5 @@ This is an informal to do list for Home Index. This list is not an official chan
 - [X] Add database backup tool.
 - [X] Add multi-user support.
 - [X] Add a way for administrators to delete users from the item database.
+- [X] Add individual user permissions.
+    - [X] Added maxmimum item limit.

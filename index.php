@@ -20,7 +20,7 @@ $identifier = $_POST["identifier"]; // This is the identifier of the item.
 $quantity = $_POST["quantity"]; // This is the quantity of the item.
 $value = $_POST["value"]; // This is the value of the item.
 
-// Collect any information from the URL that may have been submitted.
+// Collect any autocomplete information from the URL that may have been submitted, and sanitize it.
 $displayed_location = filter_var($_GET["location"], FILTER_SANITIZE_STRING); // This is the location the item is in.
 $displayed_space = filter_var($_GET["space"], FILTER_SANITIZE_STRING); // This is the space the item is in.
 $displayed_container = filter_var($_GET["container"], FILTER_SANITIZE_STRING); // This is the container the item is in.
@@ -63,12 +63,33 @@ if ($displayed_container == "" or $displayed_container == null) { // If no conta
 }
 
 
+
+// Check to see how many items this user is permitted to have.
+if ($item_database[$username]["permissions"]["maxitems"] == 0) { // Check to see if the user is missing a max-item permission override.
+    $user_max_items = $config["default_max_items"]; // Use the default maximum item count.
+} else {
+    $user_max_items = $item_database[$username]["permissions"]["maxitems"]; // Use this user's individual maximum item override.
+}
+$current_user_item_count = count_user_items($username, $item_database)[3]; // Calculate the number of items in the current user's item database.
+
+if ($current_user_item_count >= $user_max_items) { // Check to see if the user has already reached the maximum allowed item count.
+    $item_limit_reached = true;
+} else {
+    $item_limit_reached = false;
+}
+
+
+
 // Convert the item information into an array.
 $item_information = ["description" => $description, "identifier" => $identifier,"quantity" => intval($quantity), "value" => floatval($value)];
 
 
 // Add the item to the item database.
 if ($location != null and $space != null and $container != null) { // Check to see if form data has been submitted.
+    if ($item_limit_reached == true) { // Check to see if the user has already reached the maximum allowed item count, as calculated earlier.
+        echo "<p>You've reached the maximum allowed number of items! Before adding more items, please remove existing items or upgrade the number of items you're permitted to have.</p>";
+        exit();
+    }
     $item_database[$username]["locations"][$location]["spaces"][$space]["containers"][$container]["items"][$name] = $item_information; // Append the item to the loaded item database.
     save_database($config["database_location"], $item_database, $config); // Save database changes to the disk.
 }
@@ -105,19 +126,25 @@ include "./organizedatabase.php"; // Execute the database organization script.
         ?>
         <hr>
         <div class="new-item">
-            <form method="POST">
-                <label for="location">Location: </label><input type="text" name="location" id="location" placeholder="Location" value="<?php echo $displayed_location; ?>" required><br>
-                <label for="space">Space: </label><input type="text" name="space" id="space" placeholder="Space" value="<?php echo $displayed_space; ?>" required><br>
-                <label for="container">Container: </label><input type="text" name="container" id="container" placeholder="Container" value="<?php echo $displayed_container; ?>" required><br>
-                <hr>
-                <label for="name">Name: </label><input type="text" name="name" id="Name" placeholder="Name" value="<?php echo $displayed_name; ?>" required><br>
-                <label for="description">Description: </label><input type="text" name="description" id="Description" placeholder="Description" value="<?php echo $displayed_description; ?>"><br>
-                <label for="identifier">Identifier: </label><input type="text" name="identifier" id="Identifier" placeholder="Identifier" value="<?php echo $displayed_identifier; ?>"><br>
-                <label for="quantity">Quantity: </label><input type="number" name="quantity" id="Quantity" placeholder="Quantity" value="<?php if ($displayed_quantity !== "" and $displayed_quantity !== null) { echo $displayed_quantity; } else { echo "1"; } ?>" required><br>
-                <label for="value">Value: </label><input type="number" name="value" id="Value" placeholder="Value" step="0.01" value="<?php if ($displayed_value !== "" and $displayed_value !== null) { echo $displayed_value; } else { echo "0"; } ?>" required>
-                <br><br>
-                <input class="button" type="submit" value="Submit Item">
-            </form>
+            <?php
+            if ($item_limit_reached == true) { // If the item limit has been reached, hide the item add input form.
+                echo "<p>You've reached the maximum number of allowed items. Please remove some items, or upgrade your account.</p>";
+            } else { // If the item limit has not been reached, then display the item add form normally.
+                echo "<form method='POST'>";
+                echo "    <label for='location'>Location: </label><input type='text' name='location' id='location' placeholder='Location' value='" . $displayed_location. "' required><br>";
+                echo "    <label for='space'>Space: </label><input type='text' name='space' id='space' placeholder='Space' value='" . $displayed_space . "' required><br>";
+                echo "    <label for='container'>Container: </label><input type='text' name='container' id='container' placeholder='Container' value='" . $displayed_container . "' required><br>";
+                echo "    <hr>";
+                echo "    <label for='name'>Name: </label><input type='text' name='name' id='Name' placeholder='name' value='" . $displayed_name . "' required><br>";
+                echo "    <label for='description'>Description: </label><input type='text' name='description' id='description' placeholder='Description' value='" . $displayed_description ."'><br>";
+                echo "    <label for='identifier'>Identifier: </label><input type='text' name='identifier' id='identifier' placeholder='Identifier' value='" . $displayed_identifier . "'><br>";
+                echo "    <label for='quantity'>Quantity: </label><input type='number' name='quantity' id='quantity' placeholder='Quantity' value='"; if ($displayed_quantity !== "" and $displayed_quantity !== null) { echo $displayed_quantity; } else { echo "1"; } echo "' required><br>";
+                echo "    <label for='value'>Value: </label><input type='number' name='value' id='Value' placeholder='Value' step='0.01' value='"; if ($displayed_value !== "" and $displayed_value !== null) { echo $displayed_value; } else { echo "0"; } echo "' required>";
+                echo "    <br><br>";
+                echo "    <input class='button' type='submit' value='Submit Item'>";
+                echo "</form>";
+            }
+            ?>
         </div>
 
         <br><a class="button" href=".">Clear</a><br><br>

@@ -56,6 +56,9 @@ This update focuses on Home Index use on servers, and improves security and stab
     - Only the administrator user can access the entire database.
         - The administrator can also manually remove users from the item database.
     - The `migrate.php` tool allows the old database system to be migrated to the new, user based system.
+    - There is now a maximum item limit, per user.
+        - The global default item limit for each user can be set in the configuration by the administrator.
+        - Individual limits can be set for each user separately by the administrator.
 - Improved authentication system.
     - All pages now load the same authentication script.
         - This makes bugs far less likely to go unnoticed.

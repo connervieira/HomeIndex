@@ -27,6 +27,7 @@ include "./authentication.php"; // Import the authentication library.
             <?php
             if ($config["admin_user"] == "" or $username == $config["admin_user"]) { // Check to see if a admin username has been set.
                 echo "<a class='button' href='./configuration.php'>Configuration</a><br><br><br>";
+                echo "<a class='button' href='./permissions.php'>Permissions</a><br><br><br>";
             }
             ?>
             <a class="button" href='./about.php'>About</a>
