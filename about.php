@@ -20,6 +20,7 @@ $user_database_statistics = count_user_items($username, $item_database); // Calc
 
     <body>
         <div class="button-container">
+            <a class="button" href="./privacy.php">Privacy</a>
             <a class="button" href="./tools.php">Back</a>
         </div>
 
