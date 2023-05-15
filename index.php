@@ -135,7 +135,7 @@ include "./organizedatabase.php"; // Execute the database organization script.
                 echo "    <label for='space'>Space: </label><input type='text' name='space' id='space' placeholder='Space' value='" . $displayed_space . "' required><br>";
                 echo "    <label for='container'>Container: </label><input type='text' name='container' id='container' placeholder='Container' value='" . $displayed_container . "' required><br>";
                 echo "    <hr>";
-                echo "    <label for='name'>Name: </label><input type='text' name='name' id='Name' placeholder='name' value='" . $displayed_name . "' required><br>";
+                echo "    <label for='name'>Name: </label><input type='text' name='name' id='name' placeholder='Name' value='" . $displayed_name . "' required><br>";
                 echo "    <label for='description'>Description: </label><input type='text' name='description' id='description' placeholder='Description' value='" . $displayed_description ."'><br>";
                 echo "    <label for='identifier'>Identifier: </label><input type='text' name='identifier' id='identifier' placeholder='Identifier' value='" . $displayed_identifier . "'><br>";
                 echo "    <label for='quantity'>Quantity: </label><input type='number' name='quantity' id='quantity' placeholder='Quantity' value='"; if ($displayed_quantity !== "" and $displayed_quantity !== null) { echo $displayed_quantity; } else { echo "1"; } echo "' required><br>";

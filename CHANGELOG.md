@@ -77,3 +77,4 @@ This update focuses on Home Index use on servers, and improves security and stab
     - All inputs are now sanitized, even if they are only accessible to the administrator.
 - Added shortcut to move items on the main page.
 - Added a privacy page explaining the privacy and security implications of using a third party instance.
+- Fixed capitalization in "Name" field on the main page.
