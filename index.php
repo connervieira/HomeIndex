@@ -70,8 +70,8 @@ if ($item_database[$username]["permissions"]["maxitems"] == 0) { // Check to see
 } else {
     $user_max_items = $item_database[$username]["permissions"]["maxitems"]; // Use this user's individual maximum item override.
 }
-$current_user_item_count = count_user_items($username, $item_database)[3]; // Calculate the number of items in the current user's item database.
 
+$current_user_item_count = count_user_items($username, $item_database)[3]; // Calculate the number of items in the current user's item database.
 if ($current_user_item_count >= $user_max_items) { // Check to see if the user has already reached the maximum allowed item count.
     $item_limit_reached = true;
 } else {
@@ -92,7 +92,18 @@ if ($location != null and $space != null and $container != null) { // Check to s
     }
     $item_database[$username]["locations"][$location]["spaces"][$space]["containers"][$container]["items"][$name] = $item_information; // Append the item to the loaded item database.
     save_database($config["database_location"], $item_database, $config); // Save database changes to the disk.
+
+
+    // Re-calculate whether the user can add any more items after adding the most recent item.
+    $current_user_item_count++; // Increment the current user item count by one, since one item was just added. This avoids needing to re-count the entire database just for this one check.
+    if ($current_user_item_count >= $user_max_items) { // Check to see if the user has already reached the maximum allowed item count.
+        $item_limit_reached = true;
+    } else {
+        $item_limit_reached = false;
+    }
 }
+
+
 
 
 
@@ -147,9 +158,13 @@ include "./organizedatabase.php"; // Execute the database organization script.
             ?>
         </div>
 
-        <br><a class="button" href=".">Clear</a><br><br>
+        <?php
+        if ($item_limit_reached == false) { // If the item limit has been reached, hide the item add input form.
+            echo "<br><a class=\"button\" href=\".\">Clear</a><br>";
+        }
+        ?>
 
-        <hr>
+        <br><hr>
         <div class="posts-view">
             <?php
                 if (sizeof($item_database[$username]) > 0) { // Only display the information in the item database there is actually information to show.

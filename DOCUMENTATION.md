@@ -60,6 +60,7 @@ As an administrator, you can configure your Home Index instance to your preferen
         - If this field is left blank, then automatic backups will be disabled.
     - The 'Auto-Backup Interval' specifies the minimum length of time, in seconds, that Home Index won't create another backup after an initial is created.
         - This prevents large quantities of redundant backups from being created over a short period of time during heavy usage.
+    - The 'Default Max Items' value determines how many items each user is allowed to have unless over-ridden by individual permissions.
 
 
 ## Usage

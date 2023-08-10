@@ -36,6 +36,11 @@ include "./config.php"; // Import the configuration library.
             <h3>Caveats</h3>
             <p>While its open source and self-hostable nature give Home Index unrivalled transparency and privacy, these characteristics have caveats that users should be aware of. As explained before, V0LT doesn't have control over 3rd party instances of Home Index, and the entities that host these instances can modify their copies of the software to have malicious modifications designed to collect private information or manipulate users. As such, you should only use instances hosted by entities that you trust to protect your data.</p>
             <p>Steps are taken to protect the internal database from leaks, but it's important to know that the database file itself is unencrypted. This means that anyone with direct access to the server hosting your instance will be able to see the complete item database. This is even further reason to either self host Home Index, or make sure you trust the owner of the instance you choose to use.</p>
+
+            <br>
+            <h3>Recommendations</h3>
+            <p>For the best possible privacy, you should considering hosting Home Index yourself on your own network. In this scenario, you won't need to depend on any third party to protect your information. Home Index makes it easy to export your user database in raw text so it can be manually imported into a self-hosted instance.</p>
+            <p>If self-hosting isn't practical or possible, then you should use a Home Index instance hosted by V0LT or another entity that you trust.</p>
         </div>
     </body>
 </html>

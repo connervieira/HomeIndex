@@ -19,4 +19,5 @@ This is an informal to do list for Home Index. This list is not an official chan
 - [X] Add multi-user support.
 - [X] Add a way for administrators to delete users from the item database.
 - [X] Add individual user permissions.
-    - [X] Added maxmimum item limit.
+    - [X] Add maxmimum item limit.
+- [ ] Add item capacity indicator to show how much space the user has remaining.
