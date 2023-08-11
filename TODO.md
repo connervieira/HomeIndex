@@ -20,4 +20,4 @@ This is an informal to do list for Home Index. This list is not an official chan
 - [X] Add a way for administrators to delete users from the item database.
 - [X] Add individual user permissions.
     - [X] Add maxmimum item limit.
-- [ ] Add item capacity indicator to show how much space the user has remaining.
+- [X] Add item capacity indicator to show how much space the user has remaining.

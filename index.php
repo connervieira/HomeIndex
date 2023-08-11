@@ -137,6 +137,7 @@ include "./organizedatabase.php"; // Execute the database organization script.
         ?>
         <hr>
         <div class="new-item">
+            <br>
             <?php
             if ($item_limit_reached == true) { // If the item limit has been reached, hide the item add input form.
                 echo "<p>You've reached the maximum number of allowed items. Please remove some items, or upgrade your account.</p>";

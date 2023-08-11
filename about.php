@@ -5,6 +5,22 @@ include "./database.php"; // Import the database library.
 include "./utils.php"; // Import the utils library.
 
 $user_database_statistics = count_user_items($username, $item_database); // Calculate the statistics for the current user's item inventory.
+
+
+
+// Check to see how many items this user is permitted to have.
+if ($item_database[$username]["permissions"]["maxitems"] == 0) { // Check to see if the user is missing a max-item permission override.
+    $user_max_items = $config["default_max_items"]; // Use the default maximum item count.
+} else {
+    $user_max_items = $item_database[$username]["permissions"]["maxitems"]; // Use this user's individual maximum item override.
+}
+
+$current_user_item_count = count_user_items($username, $item_database)[3]; // Calculate the number of items in the current user's item database.
+if ($current_user_item_count >= $user_max_items) { // Check to see if the user has already reached the maximum allowed item count.
+    $item_limit_reached = true;
+} else {
+    $item_limit_reached = false;
+}
 ?>
 
 
@@ -43,6 +59,10 @@ $user_database_statistics = count_user_items($username, $item_database); // Calc
                 }
             ?>
 
+            <br>
+            <h2>User Information</h2>
+            <p>Capacity: <?php echo $current_user_item_count; ?> of <?php echo $user_max_items; ?> items used</p>
+            <p><progress style="width:10%;height:10px;" value="<?php echo $current_user_item_count; ?>" min="0" max="<?php echo $user_max_items; ?>"></progress> <?php echo ($current_user_item_count/$user_max_items)*100; ?>% used</p>
             <br>
             <h2>Database Information</h2>
             <p>Database Location Count: <?php echo $user_database_statistics[0]; ?></p>
