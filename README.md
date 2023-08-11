@@ -1,18 +1,18 @@
 # Home Index
 
-The ultimate tool for creating an inventory or personal possessions.
+The ultimate tool for organizing possessions.
 
 
 ## Disclaimer
 
-While Home Index is designed to be as secure and reliable as possible, there's always an inherent risk in exposing a web service to a network. You should not fully rely on Home Index for critical tasks, or to protect sensitive information. Make sure you back up your information regularly, and take steps to ensure the security of your instance..
+While Home Index is designed to be as secure and reliable as possible, there's always an inherent risk in exposing a web service to a network. You should not solely rely on Home Index for critical tasks, or to protect sensitive information. Make sure you back up your information regularly, and take steps to ensure the security of your instance.
 
 
 ## Description
 
-If you've ever misplaced something (which you almost certainly have), you understand the frustration of being sure you have something, but not being able to find it. You're left to either waste time searching, or to purchase a new item. Home Index is designed to elimate this problem by helping you keep track of all of your posessions. Whether you're a maker wanting  to organize a workshop, a parent interested in keepig track household supplies, or a teacher looking to make sure materials end up back where they started, Home Index is an extremely valuable asset.
+If you can remember the last time you misplaced something, you understand the frustration of being sure you have something, but not being able to find it. You're left to either waste time searching, or to give up and purchase a new item. Home Index is designed to elimate this problem by helping you keep track of all of your posessions. Whether you're a maker wanting  to organize a workshop, a parent interested in keeping track household supplies, or a teacher looking to make sure materials end up back where they started, Home Index is an extremely valuable asset.
 
-Home Index is an inventory management unlike nearly all others. It follows a simple, 3 part hierarchy system. Items are sorted into "containers", which are sorted into "spaces", which are sorted into "locations". For example, you might have bandaids, placed in a first aid kit, placed in the trunk, inside your car. Similarly, you might have a charging cable, in the top drawer, in your bedroom, in your home. This simple sorting structure makes it quick to sort your items, while still making them extremely easy to find later. It's difficult to fully appreciate the magic of Home Index until you need to find something you remember seeing, but can't find. Regardless of whether you index 100 items, or 10000 items, Home Index makes finding what you need a matter of seconds, rather than hours.
+Home Index is an inventory management unlike nearly all others. It follows a simple, 3 part hierarchy system. Items are sorted into "containers", which are sorted into "spaces", which are sorted into "locations". For example, you might have bandaids, placed in a first aid kit, placed in the trunk, inside your car. Similarly, you might have a charging cable, in the top drawer, in your bedroom, in your home. This simple sorting structure makes it quick to log your items, while still making them extremely easy to find later. It's difficult to fully appreciate the magic of Home Index until you need to find something you remember seeing, but can't recall the location of. Regardless of whether you index 100 items, or 10000 items, Home Index makes finding what you need a matter of seconds, rather than hours.
 
 
 ## Features
