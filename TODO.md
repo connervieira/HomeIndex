@@ -21,3 +21,4 @@ This is an informal to do list for Home Index. This list is not an official chan
 - [X] Add individual user permissions.
     - [X] Add maxmimum item limit.
 - [X] Add item capacity indicator to show how much space the user has remaining.
+- [ ] Add a landing page for users who are not signed in.
