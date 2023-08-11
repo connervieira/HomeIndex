@@ -21,6 +21,7 @@ $backup_overwriting = $_POST["backupoverwriting"]; // This determines whether th
 $auto_backup = $_POST["autobackup"]; // This determines where automatic backups will be created.
 $auto_backup_interval = $_POST["autobackupinterval"]; // This determines how often automatic backups can be created.
 $default_max_items = $_POST["defaultmaxitems"]; // This determines the maximum number of items that a user can have in their database by default.
+$use_landing_page = $_POST["uselandingpage"]; // This determines whether Home Index will redirect unauthenticated users to a landing page instead of directly to the login page.
 
 
 
@@ -113,6 +114,8 @@ $auto_backup_interval = intval($auto_backup_interval);
 
 $default_max_items = intval($default_max_items);
 
+if ($use_landing_page == "on") { $use_landing_page = true; } else { $use_landing_image = false; } // Convert the 'display advanced tools' setting to a bool.
+
 
 
 
@@ -150,6 +153,7 @@ if ($theme != null) { // Check to see if information was input through the form.
     $config["auto_backup"] = $auto_backup;
     $config["auto_backup_interval"] = $auto_backup_interval;
     $config["default_max_items"] = $default_max_items;
+    $config["use_landing_page"] = $use_landing_page;
 
 
     file_put_contents("./configdatabase.txt", serialize($config)); // Write database changes to disk.
@@ -229,6 +233,8 @@ $formatted_whitelist = substr($formatted_whitelist, 1); // Remove the first char
             <label for="autobackupinterval">Auto-Backup Interval: </label><input id="autobackupinterval" name="autobackupinterval" type="number" step="0" min="1" value="<?php echo $config["auto_backup_interval"]; ?>" placeholder="60 seconds">
             <br><br>
             <label for="defaultmaxitems">Default Max Items: </label><input id="defaultmaxitems" name="defaultmaxitems" type="number" step="1" min="1" value="<?php echo $config["default_max_items"]; ?>" placeholder="1000 items">
+            <br><br>
+            <label for="uselandingpage">Use Landing Page: </label><input id="uselandingpage" name="uselandingpage" type="checkbox" <?php if ($config["use_landing_page"] == true) { echo "checked"; } ?>>
             <br><br>
             <input type="submit" value="Submit">
         </form>

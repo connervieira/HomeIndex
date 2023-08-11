@@ -61,6 +61,9 @@ As an administrator, you can configure your Home Index instance to your preferen
     - The 'Auto-Backup Interval' specifies the minimum length of time, in seconds, that Home Index won't create another backup after an initial is created.
         - This prevents large quantities of redundant backups from being created over a short period of time during heavy usage.
     - The 'Default Max Items' value determines how many items each user is allowed to have unless over-ridden by individual permissions.
+    - The 'Use Landing Page' setting determines whether user's who are not signed in will be re-directed to an intermediate landing page, rather than directly to the login page.
+        - The landing page describes what Home Index is, and shows a static demonstration of how it works. Users can be redirected to the login page manually if they click the 'Login' button at the top of the landing page.
+        - If you plan on using Home Index as a private instance, you may want to disable this page to allow for quicker sign-ins.
 
 
 ## Usage

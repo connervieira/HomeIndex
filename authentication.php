@@ -6,7 +6,11 @@ session_start();
 if (isset($_SESSION['loggedin'])) {
 	$username = $_SESSION['username'];
 } else {
-    header("Location: " . $config["login_page"]);
+    if ($config["use_landing_page"] == true) { // Check to see if the configuration value to use an intermediate landing page is active.
+        header("Location: ./landing.php");
+    } else {
+        header("Location: " . $config["login_page"]);
+    }
     exit(); // Quit loading the rest of the page.
 }
 

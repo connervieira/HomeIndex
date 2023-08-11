@@ -23,7 +23,8 @@ if (file_exists("./configdatabase.txt") == false) { // If the database file does
     $config["backup_overwriting"] = false;
     $config["auto_backup"] = "";
     $config["auto_backup_interval"] = 60;
-    $config["default_max_items"] = 2048;
+    $config["default_max_items"] = 1000;
+    $config["use_landing_page"] = true;
     file_put_contents("./configdatabase.txt", serialize($config)); // Write the configuration database to disk.
 
 } else { // Otherwise, the file exists, so load the configuration database from disk.
