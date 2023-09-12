@@ -49,7 +49,7 @@ November 7th, 2022
 
 This update focuses on Home Index use on servers, and improves security and stability. Notably, this update also adds support for multiple users on a single instance.
 
-*Release date to be determined*
+September 12th, 2023
 
 - Multiple users can now share a single instance.
     - Users have their own item inventory database, and can individually export their information.
