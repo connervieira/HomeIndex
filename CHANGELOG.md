@@ -78,3 +78,10 @@ September 12th, 2023
 - Added shortcut to move items on the main page.
 - Added a privacy page explaining the privacy and security implications of using a third party instance.
 - Fixed capitalization in "Name" field on the main page.
+
+
+## Version 3.1
+
+*Release date to be determined*
+
+- Home Index now checks to make sure the user is signed in with DropAuth (or a DropAuth compliant service), rather than just checking for a username.
