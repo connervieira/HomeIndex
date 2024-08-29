@@ -85,3 +85,4 @@ September 12th, 2023
 *Release date to be determined*
 
 - Home Index now checks to make sure the user is signed in with DropAuth (or a DropAuth compliant service), rather than just checking for a username.
+- Improved the reliability of the database organization process.

@@ -25,7 +25,7 @@ foreach ($item_database[$username]["locations"] as $location_name => $location_i
 
 // Remove any empty users.
 foreach ($item_database as $user => $user_information) {
-    if (sizeof($item_database[$user]["locations"]) == 0) { // Check to see if this user has no locations, and therefore has no items.
+    if (!in_array("locations", array_keys($item_database[$user])) or sizeof($item_database[$user]["locations"]) == 0) { // Check to see if this user has no locations, and therefore has no items.
         unset($item_database[$user]); // Remove the empty user.
     }
 }
