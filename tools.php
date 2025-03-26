@@ -30,17 +30,18 @@ include "./authentication.php"; // Import the authentication library.
                 echo "<a class='button' href='./permissions.php'>Permissions</a><br><br><br>";
             }
             ?>
-            <a class="button" href='./about.php'>About</a>
+            <a class="button" href='./about.php' title='See information about this instance and your information'>About</a>
 
             <br><br>
             <h2>Data Viewing</h2>
-            <a class="button" href='./listitems.php'>List Items</a><br><br><br>
-            <a class="button" href='./searchitems.php'>Search Items</a>
+            <a class="button" href='./listitems.php' title='List all items and their locations in a plain text list'>List Items</a><br><br><br>
+            <a class="button" href='./listcontainers.php' title='List all locations, spaces, and containers in plain text'>List Containers</a><br><br><br>
+            <a class="button" href='./searchitems.php' title='Search for items by name'>Search Items</a>
 
             <br><br>
             <h2>Data Management</h2>
-            <a class="button" href='./movecontainer.php'>Move Container</a><br><br><br>
-            <a class="button" href='./moveitem.php'>Move Item</a>
+            <a class="button" href='./movecontainer.php' title='Move a container to a different space/location'>Move Container</a><br><br><br>
+            <a class="button" href='./moveitem.php' title='Move an item to a different container, space, and/or location'>Move Item</a>
 
             <?php
             if ($config["display_advanced_tools"] == true) { // Only display the Advanced Tools section if the configuration specifies to do so.

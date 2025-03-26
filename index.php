@@ -147,11 +147,11 @@ include "./organizedatabase.php"; // Execute the database organization script.
                 echo "    <label for='space'>Space: </label><input type='text' name='space' id='space' placeholder='Space' value='" . $displayed_space . "' required><br>";
                 echo "    <label for='container'>Container: </label><input type='text' name='container' id='container' placeholder='Container' value='" . $displayed_container . "' required><br>";
                 echo "    <hr>";
-                echo "    <label for='name'>Name: </label><input type='text' name='name' id='name' placeholder='Name' value='" . $displayed_name . "' required><br>";
-                echo "    <label for='description'>Description: </label><input type='text' name='description' id='description' placeholder='Description' value='" . $displayed_description ."'><br>";
-                echo "    <label for='identifier'>Identifier: </label><input type='text' name='identifier' id='identifier' placeholder='Identifier' value='" . $displayed_identifier . "'><br>";
-                echo "    <label for='quantity'>Quantity: </label><input type='number' name='quantity' id='quantity' placeholder='Quantity' value='"; if ($displayed_quantity !== "" and $displayed_quantity !== null) { echo $displayed_quantity; } else { echo "1"; } echo "' required><br>";
-                echo "    <label for='value'>Value: </label><input type='number' name='value' id='Value' placeholder='Value' step='0.01' value='"; if ($displayed_value !== "" and $displayed_value !== null) { echo $displayed_value; } else { echo "0"; } echo "' required>";
+                echo "    <label for='name' title='A thorough descriptive name for this item'>Name: </label><input type='text' name='name' id='name' placeholder='Name' value='" . $displayed_name . "' required><br>";
+                echo "    <label for='description' title='A brief description to help you find this item'>Description: </label><input type='text' name='description' id='description' placeholder='Description' value='" . $displayed_description ."'><br>";
+                echo "    <label for='identifier' title='A more specific identifier for this item (SKU, serial number, barcode, etc.)'>Identifier: </label><input type='text' name='identifier' id='identifier' placeholder='Identifier' value='" . $displayed_identifier . "'><br>";
+                echo "    <label for='quantity' title='The amount of this item present'>Quantity: </label><input type='number' name='quantity' id='quantity' placeholder='Quantity' value='"; if ($displayed_quantity !== "" and $displayed_quantity !== null) { echo $displayed_quantity; } else { echo "1"; } echo "' required><br>";
+                echo "    <label for='value' title='The approximate value of this item, per unit'>Value: </label><input type='number' name='value' id='Value' placeholder='Value' step='0.01' value='"; if ($displayed_value !== "" and $displayed_value !== null) { echo $displayed_value; } else { echo "0"; } echo "' required>";
                 echo "    <br><br>";
                 echo "    <input class='button' type='submit' value='Submit Item'>";
                 echo "</form>";

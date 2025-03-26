@@ -187,54 +187,54 @@ $formatted_whitelist = substr($formatted_whitelist, 1); // Remove the first char
             <a class="button" href="./tools.php">Back</a>
         </div>
         <form method="POST">
-            <label for='theme'>Theme:</label>
+            <label for='theme' title='The aesthetic theme used by the interface for all users'>Theme:</label>
             <select id='theme' name='theme'>
                 <option value='light' <?php if ($config["theme"] == "light") { echo "selected"; } ?>>Light</option>
                 <option value='dark' <?php if ($config["theme"] == "dark") { echo "selected"; } ?>>Dark</option>
-                <option value='rainbow' <?php if ($config["theme"] == "rainbow") { echo "selected"; } ?>>Rainbow</option>
                 <option value='contrast' <?php if ($config["theme"] == "contrast") { echo "selected"; } ?>>Contrast</option>
                 <option value='metallic' <?php if ($config["theme"] == "metallic") { echo "selected"; } ?>>Metallic</option>
+                <option value='rainbow' <?php if ($config["theme"] == "rainbow") { echo "selected"; } ?>>Rainbow</option>
             </select>
             <br><br>
-            <label for="adminuser">Administrator: </label><input id="adminuser" name="adminuser" type="text" value="<?php echo $config["admin_user"]; ?>" placeholder="Admin User">
+            <label for="adminuser" title='The name of the user who can configure this instance'>Administrator: </label><input id="adminuser" name="adminuser" type="text" value="<?php echo $config["admin_user"]; ?>" placeholder="Admin User">
             <br><br>
-            <label for='access'>Access:</label>
+            <label for='access' title='Determines who is allowed to access this Home Index instance'>Access:</label>
             <select id='access' name='access'>
-                <option value='everyone' <?php if ($config["access"] == "everyone") { echo "selected"; } ?>>Everyone</option>
-                <option value='whitelist' <?php if ($config["access"] == "whitelist") { echo "selected"; } ?>>Whitelist</option>
-                <option value='admin' <?php if ($config["access"] == "admin") { echo "selected"; } ?>>Admin</option>
+                <option value='everyone' <?php if ($config["access"] == "everyone") { echo "selected"; } ?> title='anyone with an account'>Everyone</option>
+                <option value='whitelist' <?php if ($config["access"] == "whitelist") { echo "selected"; } ?> title='any account in the whitelist'>Whitelist</option>
+                <option value='admin' <?php if ($config["access"] == "admin") { echo "selected"; } ?> title='only the administrator'>Admin</option>
             </select>
             <br><br>
-            <label for="whitelist">Whitelist: </label><input id="whitelist" name="whitelist" type="text" value="<?php echo $formatted_whitelist; ?>" placeholder="user1,user2,user3">
+            <label for="whitelist" title="A comma-separated list of users who are allowed to use this Home Index instance">Whitelist: </label><input id="whitelist" name="whitelist" type="text" value="<?php echo $formatted_whitelist; ?>" placeholder="user1,user2,user3">
             <br><br>
-            <label for="databaselocation">Database Location: </label><input id="databaselocation" name="databaselocation" type="text" value="<?php echo $config["database_location"]; ?>" placeholder="Database Location">
+            <label for="databaselocation" title='The file-path of the Home Index database file'>Database Location: </label><input id="databaselocation" name="databaselocation" type="text" value="<?php echo $config["database_location"]; ?>" placeholder="Database Location">
             <br><br>
-            <label for="loginpage">Login Page: </label><input id="loginpage" name="loginpage" type="text" value="<?php echo $config["login_page"]; ?>" placeholder="/login.php">
+            <label for="loginpage" title="The URL of the DropAuth-compatible login page for this instance">Login Page: </label><input id="loginpage" name="loginpage" type="text" value="<?php echo $config["login_page"]; ?>" placeholder="/login.php">
             <br><br>
-            <label for="instancename">Instance Name: </label><input id="instancename" name="instancename" type="text" value="<?php echo $config["instance_name"]; ?>" placeholder="Instance Name">
+            <label for="instancename" title="The name used for this instance of Home Index">Instance Name: </label><input id="instancename" name="instancename" type="text" value="<?php echo $config["instance_name"]; ?>" placeholder="Instance Name">
             <br><br>
-            <label for="instancetagline">Instance Tagline: </label><input id="instancetagline" name="instancetagline" type="text" value="<?php echo $config["instance_tagline"]; ?>" placeholder="Instance Tagline">
+            <label for="instancetagline" title="The tagline used for this instance of Home Index">Instance Tagline: </label><input id="instancetagline" name="instancetagline" type="text" value="<?php echo $config["instance_tagline"]; ?>" placeholder="Instance Tagline">
             <br><br>
-            <label for='creditlevel'>Credit Level:</label>
+            <label for='creditlevel' title="The level of credit given to V0LT from the development of Home Index">Credit Level:</label>
             <select id='creditlevel' name='creditlevel'>
                 <option value='high' <?php if ($config["credit_level"] == "high") { echo "selected"; } ?>>High</option>
                 <option value='low' <?php if ($config["credit_level"] == "low") { echo "selected"; } ?>>Low</option>
                 <option value='off' <?php if ($config["credit_level"] == "off") { echo "selected"; } ?>>Off</option>
             </select>
             <br><br>
-            <label for="displayadvancedtools">Display Advanced Tools: </label><input id="displayadvancedtools" name="displayadvancedtools" type="checkbox" <?php if ($config["display_advanced_tools"] == true) { echo "checked"; } ?>>
+            <label for="displayadvancedtools" title="Determines whether advanced tools are displayed on the tools page">Display Advanced Tools: </label><input id="displayadvancedtools" name="displayadvancedtools" type="checkbox" <?php if ($config["display_advanced_tools"] == true) { echo "checked"; } ?>>
             <br><br>
-            <label for="displayedsearchresultscount">Displayed Search Results: </label><input id="displayedsearchresultscount" name="displayedsearchresultscount" type="number" placeholder="Displayed Search Results Count" value="<?php echo $config["displayed_search_results_count"]; ?>">
+            <label for="displayedsearchresultscount" title="Determines how many results are displayed on the search page">Displayed Search Results: </label><input id="displayedsearchresultscount" name="displayedsearchresultscount" type="number" placeholder="Displayed Search Results Count" value="<?php echo $config["displayed_search_results_count"]; ?>">
             <br><br>
-            <label for="backupoverwriting">Backup Overwriting: </label><input id="backupoverwriting" name="backupoverwriting" type="checkbox" <?php if ($config["backup_overwriting"] == true) { echo "checked"; } ?>>
+            <label for="backupoverwriting" title="Determines whether administrators can manually overwrite existing backups using the backup tool">Backup Overwriting: </label><input id="backupoverwriting" name="backupoverwriting" type="checkbox" <?php if ($config["backup_overwriting"] == true) { echo "checked"; } ?>>
             <br><br>
-            <label for="autobackup">Auto-Backup Path: </label><input id="autobackup" name="autobackup" type="text" value="<?php echo $config["auto_backup"]; ?>" placeholder="/home/user/BackupFile">
+            <label for="autobackup" title="This is where the Home Index database file will be backed up to">Auto-Backup Path: </label><input id="autobackup" name="autobackup" type="text" value="<?php echo $config["auto_backup"]; ?>" placeholder="/home/user/BackupFile">
             <br><br>
-            <label for="autobackupinterval">Auto-Backup Interval: </label><input id="autobackupinterval" name="autobackupinterval" type="number" step="0" min="1" value="<?php echo $config["auto_backup_interval"]; ?>" placeholder="60 seconds">
+            <label for="autobackupinterval" title="Automatically back up the database when changes are made if it has been more than N seconds since the last backup">Auto-Backup Interval: </label><input id="autobackupinterval" name="autobackupinterval" type="number" step="0" min="1" value="<?php echo $config["auto_backup_interval"]; ?>" placeholder="60 seconds">
             <br><br>
-            <label for="defaultmaxitems">Default Max Items: </label><input id="defaultmaxitems" name="defaultmaxitems" type="number" step="1" min="1" value="<?php echo $config["default_max_items"]; ?>" placeholder="1000 items">
+            <label for="defaultmaxitems" title="The maximum amount of items a user can have by default">Default Max Items: </label><input id="defaultmaxitems" name="defaultmaxitems" type="number" step="1" min="1" value="<?php echo $config["default_max_items"]; ?>" placeholder="1000 items">
             <br><br>
-            <label for="uselandingpage">Use Landing Page: </label><input id="uselandingpage" name="uselandingpage" type="checkbox" <?php if ($config["use_landing_page"] == true) { echo "checked"; } ?>>
+            <label for="uselandingpage" title="Determines if unauthenticated users will be sent to a landing page explaining Home Index">Use Landing Page: </label><input id="uselandingpage" name="uselandingpage" type="checkbox" <?php if ($config["use_landing_page"] == true) { echo "checked"; } ?>>
             <br><br>
             <input type="submit" value="Submit">
         </form>
